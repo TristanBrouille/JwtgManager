@@ -1,0 +1,35 @@
+<app-auth-layout heading="Créer un compte">
+  <form class="form" (submit)="onSubmit($event)" novalidate>
+    <label class="full">
+      E-mail
+      <input type="email" autocomplete="email" [formField]="registerForm.email" />
+      @if (registerForm.email().touched() && registerForm.email().invalid()) {
+        <span class="field-error">{{ registerForm.email().errors()[0].message }}</span>
+      }
+    </label>
+    <label class="full">
+      Pseudo
+      <input type="text" autocomplete="nickname" [formField]="registerForm.pseudo" />
+      @if (registerForm.pseudo().touched() && registerForm.pseudo().invalid()) {
+        <span class="field-error">{{ registerForm.pseudo().errors()[0].message }}</span>
+      }
+    </label>
+    <label class="full">
+      Mot de passe
+      <input type="password" autocomplete="new-password" [formField]="registerForm.password" />
+      @if (registerForm.password().touched() && registerForm.password().invalid()) {
+        <span class="field-error">{{ registerForm.password().errors()[0].message }}</span>
+      }
+    </label>
+    @if (error(); as message) {
+      <p class="error-box full" role="alert">{{ message }}</p>
+    }
+    <button type="submit" class="full" [disabled]="registerForm().submitting()">
+      {{ registerForm().submitting() ? 'Création…' : 'Créer mon compte' }}
+    </button>
+  </form>
+  <p class="note">
+    Vos 360 espèces sont créées automatiquement, avec un objectif de 3 niveaux 40 chacune.
+  </p>
+  <p class="note">Déjà inscrit ? <a routerLink="/connexion">Se connecter</a></p>
+</app-auth-layout>

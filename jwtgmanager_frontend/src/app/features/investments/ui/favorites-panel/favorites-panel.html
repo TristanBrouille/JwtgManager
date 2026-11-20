@@ -1,0 +1,90 @@
+<form class="add" (submit)="onAdd($event)" novalidate>
+  <label>
+    Ajouter une espèce aux favoris
+    <input
+      type="text"
+      list="favorite-candidates"
+      autocomplete="off"
+      placeholder="Ex. Tyrannosaure"
+      [formField]="addForm.species"
+    />
+  </label>
+  <datalist id="favorite-candidates">
+    @for (s of candidates(); track s.speciesId) {
+      <option [value]="s.name"></option>
+    }
+  </datalist>
+  <button type="submit" [disabled]="!canAdd()">Ajouter</button>
+  @if (addForm.species().touched() && addForm.species().invalid()) {
+    <span class="field-error full">{{ addForm.species().errors()[0].message }}</span>
+  }
+</form>
+
+<div class="favs">
+  @for (s of favorites(); track s.speciesId) {
+    <article
+      class="fav"
+      [class.focused]="s.speciesId === focusedId()"
+      [attr.aria-busy]="busyId() === s.speciesId"
+    >
+      <header>
+        <div>
+          <h3>{{ s.name }}</h3>
+          <span class="note"
+            ><app-rarity-chip [code]="s.rarityCode" /> · <app-currency-tag [currency]="s.currency"
+          /></span>
+        </div>
+        <button
+          type="button"
+          class="ghost star"
+          [attr.aria-label]="'Retirer ' + s.name + ' des favoris'"
+          title="Retirer des favoris"
+          (click)="removed.emit(s.speciesId)"
+        >
+          ★
+        </button>
+      </header>
+      <app-progress-bar [value]="s.progress" [label]="'Progression ' + s.name" />
+      <p class="note">
+        {{ s.progress | pct }} ·
+        @if (s.done) {
+          <span class="up">terminée</span>
+        } @else if (s.unitCost === null) {
+          coût non renseigné
+        } @else {
+          reste {{ s.remaining | short }}
+        }
+      </p>
+      <div class="levels">
+        @for (l of levels; track l.field) {
+          <div class="lvl">
+            <span class="lbl">{{ l.label }}</span>
+            <button
+              type="button"
+              class="ghost step"
+              [disabled]="s[l.field] === 0 || busyId() === s.speciesId"
+              [attr.aria-label]="'Retirer un ' + s.name + ' ' + l.label"
+              (click)="change(s, l.field, -1)"
+            >
+              −
+            </button>
+            <b class="count" aria-live="polite">{{ s[l.field] }}</b>
+            <button
+              type="button"
+              class="step"
+              [disabled]="busyId() === s.speciesId"
+              [attr.aria-label]="'Ajouter un ' + s.name + ' ' + l.label"
+              (click)="change(s, l.field, 1)"
+            >
+              +
+            </button>
+          </div>
+        }
+      </div>
+    </article>
+  } @empty {
+    <p class="empty">
+      Aucun favori pour l'instant. Ajoutez les espèces que vous faites évoluer en ce moment.
+    </p>
+  }
+</div>

@@ -1,0 +1,25 @@
+.group {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+}
+.group:last-child {
+  border: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) 56px;
+  gap: 12px;
+  align-items: center;
+}
+.note {
+  padding-left: 122px;
+  margin-top: 2px;
+}
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 90px minmax(0, 1fr) 52px;
+  }
+  .note {
+    padding-left: 0;
+  }
+}

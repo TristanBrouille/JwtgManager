@@ -1,0 +1,49 @@
+<div class="head">
+  <div>
+    <h1>Investissements</h1>
+    <p>
+      Épinglez les espèces que vous faites évoluer en ce moment : elles apparaissent sur le tableau
+      de bord, et un clic vous ramène ici pour ajouter ou retirer des spécimens à chaque palier.
+    </p>
+  </div>
+</div>
+
+@if (message(); as m) {
+  <p class="success" role="status">{{ m }}</p>
+}
+@if (error(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+
+<div class="grid two">
+  <section class="card">
+    <h2>Favoris</h2>
+    <app-favorites-panel
+      [species]="species()"
+      [focusedId]="focusedId()"
+      [busyId]="busyId()"
+      (added)="addFavorite($event)"
+      (removed)="removeFavorite($event)"
+      (adjusted)="adjust($event)"
+    />
+  </section>
+  <section class="card">
+    <h2>Budget hebdomadaire</h2>
+    <p class="note">Sert à estimer la date de fin dans le tableau de bord.</p>
+    <app-budget-form
+      [settings]="settings()"
+      [saving]="savingBudget()"
+      (saved)="saveBudget($event)"
+    />
+  </section>
+</div>
+
+@if (investments().length) {
+  <section class="card log">
+    <app-investment-log
+      [investments]="investments()"
+      [busyId]="cancelling()"
+      (cancelled)="cancel($event)"
+    />
+  </section>
+}

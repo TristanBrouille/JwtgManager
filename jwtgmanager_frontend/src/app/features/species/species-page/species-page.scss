@@ -1,0 +1,27 @@
+input[type='search'] {
+  min-width: min(260px, 100%);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: -4px 0 12px;
+}
+.sw {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  vertical-align: -2px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.sw.amber {
+  background: var(--row-amber);
+  border-color: var(--amber);
+}
+.sw.red {
+  background: var(--row-locked);
+  border-color: var(--rex);
+}

@@ -1,0 +1,35 @@
+<article class="card" [class.super]="isSuper()">
+  <header>
+    <h3>{{ entry().hybrid.name }}</h3>
+    <label class="badge" [class.ok]="entry().hybrid.unlocked">
+      <input type="checkbox" [checked]="entry().hybrid.unlocked" (change)="onToggle($event)" />
+      {{ entry().hybrid.unlocked ? 'Débloqué' : 'À débloquer' }}
+    </label>
+  </header>
+  @if (isSuper()) {
+    <span class="kind">Super hybride · hybride d'hybrides</span>
+  }
+  <span class="note">
+    <app-rarity-chip [code]="entry().hybrid.rarityCode" /> · progression
+    {{ entry().hybrid.progress | pct }}
+  </span>
+  @for (c of entry().components; track c.speciesId) {
+    <div class="par">
+      <span>
+        {{ c.name }}
+        @if (c.hybridKind !== 'NONE') {
+          <small class="tag">{{
+            c.hybridKind === 'SUPER_HYBRID' ? 'super hybride' : 'hybride'
+          }}</small>
+        }
+      </span>
+      <app-progress-bar [value]="c.progress" [label]="'Progression ' + c.name" />
+      <span class="num note">{{ c.progress | pct }}</span>
+    </div>
+  } @empty {
+    <span class="note">Composants non renseignés dans l'Excel.</span>
+  }
+  @if (ready()) {
+    <span class="up">Composants au max : prêt à débloquer</span>
+  }
+</article>

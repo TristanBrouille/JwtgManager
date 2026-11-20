@@ -1,0 +1,85 @@
+<div class="head">
+  <div>
+    <h1>{{ title() }}</h1>
+    @if (data(); as d) {
+      <p>
+        {{ d.summary.done }} espèces terminées sur {{ d.summary.tracked }} suivies ·
+        {{ d.summary.lvl40 }} niveaux 40 obtenus sur {{ d.summary.lvl40Target }} visés.
+      </p>
+    }
+  </div>
+  <div ngToolbar class="filters" aria-label="Filtrer par monnaie">
+    @for (f of filters; track f.value) {
+      <button
+        ngToolbarWidget
+        type="button"
+        class="seg"
+        [attr.aria-pressed]="api.currency() === f.value"
+        (click)="select(f.value)"
+      >
+        {{ f.label }}
+      </button>
+    }
+  </div>
+</div>
+
+@if (error(); as message) {
+  <p class="error-box" role="alert">{{ message }}</p>
+}
+
+@if (data(); as d) {
+  <div class="grid kpis">
+    <app-kpi-card label="Complétion globale" [value]="completionLabel()">
+      @if (delta(); as dl) {
+        <span class="up">{{ dl }}</span> depuis le dernier jour suivi
+      } @else {
+        Premier jour de suivi
+      }
+    </app-kpi-card>
+    @for (k of kpis(); track k.label) {
+      <app-kpi-card [label]="k.label" [value]="k.value" [tone]="k.tone">{{ k.sub }}</app-kpi-card>
+    }
+  </div>
+
+  <section class="card favorites">
+    <h2>Mes favoris</h2>
+    <p class="note">Cliquez sur une espèce pour ajouter ou retirer des spécimens.</p>
+    <app-favorites-list [favorites]="favorites()" />
+  </section>
+
+  <div class="grid two">
+    <section class="card">
+      <h2>Évolution de la complétion</h2>
+      <p class="note">
+        Un point par jour où votre collection change (investissement, saisie, objectif).
+      </p>
+      @defer (on viewport) {
+        <app-evolution-chart [points]="api.history.value()" />
+        @if (api.history.value().length < 2) {
+          <p class="note">La courbe se dessine dès le deuxième jour de suivi.</p>
+        }
+      } @placeholder {
+        <div class="chart-placeholder"></div>
+      }
+    </section>
+    <section class="card">
+      <h2>Complétion par rareté</h2>
+      <app-rarity-bars [rarities]="d.byRarity" />
+    </section>
+  </div>
+
+  <div class="grid two second">
+    <section class="card">
+      <h2>Les plus proches de l'objectif</h2>
+      <p class="note">Espèces non terminées, triées par coût restant le plus faible.</p>
+      <app-closest-list [species]="d.closest" />
+    </section>
+    <section class="card">
+      <h2>Projection budget</h2>
+      <p class="note">Selon vos revenus hebdomadaires (onglet Investissements).</p>
+      <app-projection-panel [dna]="d.dna" [superDna]="d.superDna" [amber]="d.amber" />
+    </section>
+  </div>
+} @else if (api.dashboard.isLoading()) {
+  <p class="empty">Chargement du tableau de bord…</p>
+}

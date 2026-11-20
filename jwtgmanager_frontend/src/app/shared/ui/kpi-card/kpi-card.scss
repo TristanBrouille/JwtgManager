@@ -1,0 +1,22 @@
+.kpi .v {
+  font:
+    800 clamp(28px, 3vw, 36px) / 1 'Barlow Condensed',
+    sans-serif;
+  margin: 6px 0 4px;
+  white-space: nowrap;
+}
+.kpi .v.am {
+  color: var(--amber);
+}
+.kpi .l {
+  color: var(--mute);
+  font-size: 14px;
+  font-weight: 600;
+}
+.kpi .s {
+  font-size: 14px;
+  color: var(--mute);
+}
+.kpi .v.sup {
+  color: var(--super);
+}

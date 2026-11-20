@@ -1,0 +1,306 @@
+/*
+  JWTG Manager — thème global.
+  Carnet de terrain d'un gestionnaire de parc : vert jungle profond / os fossile,
+  accent rouge « rex », ambre réservé à la monnaie ambre.
+*/
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#efe9db, #0e1b15);
+  --panel: light-dark(#fffaf0, #152820);
+  --panel2: light-dark(#f6efe0, #1b3227);
+  --ink: light-dark(#18261e, #ede5d2);
+  --mute: light-dark(#5a685f, #9db0a4);
+  --line: light-dark(#dcd1bb, #284234);
+  --leaf: light-dark(#1d6a43, #5cc98b);
+  --leafbg: light-dark(#d9eadb, #1f3d2d);
+  --on-leaf: light-dark(#ffffff, #0b1711);
+  --amber: light-dark(#b8700c, #f0a640);
+  --amberbg: light-dark(#f7e4c4, #3a2c14);
+  --rex: light-dark(#c13b26, #ff6b50);
+  --super: light-dark(#b3261e, #ff7a6b);
+  --superbg: light-dark(#fbdcd8, #3d1714);
+  --row-amber: light-dark(#fbe9cc, #33270f);
+  --row-locked: light-dark(#f8dcd6, #361613);
+  --side: light-dark(#18261e, #0a1410);
+  --sideink: #e9e1cd;
+  --rC: #8b9b90;
+  --rR: #3f7fd6;
+  --rE: #d9831a;
+  --rL: #cf3f2b;
+  --rT: #14a0a0;
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    16px/1.5 Barlow,
+    system-ui,
+    sans-serif;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Barlow Condensed', Barlow, sans-serif;
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(32px, 4.4vw, 48px);
+  font-weight: 800;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.head p {
+  margin: 6px 0 0;
+  color: var(--mute);
+  max-width: 62ch;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+.kpis {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  margin-bottom: 16px;
+}
+.two {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--mute);
+}
+.up {
+  color: var(--leaf);
+  font-weight: 600;
+}
+.am {
+  color: var(--amber);
+}
+.rx {
+  color: var(--rex);
+}
+.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: var(--mute);
+}
+.error-box {
+  background: light-dark(#fbe3dd, #3b1a14);
+  color: var(--rex);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.list li:last-child {
+  border: 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+}
+input[type='search'],
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+select {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 9px 11px;
+  min-height: 44px;
+}
+
+button {
+  background: var(--leaf);
+  color: var(--on-leaf);
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 16px;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+button.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+button.seg {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+}
+button.seg[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--bg);
+}
+:focus-visible {
+  outline: 3px solid var(--rex);
+  outline-offset: 2px;
+}
+
+.tablewrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: auto;
+  max-height: 70vh;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: var(--panel2);
+  text-align: left;
+  font-size: 13px;
+  color: var(--mute);
+  font-weight: 600;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+  z-index: 1;
+}
+td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: end;
+}
+.form label {
+  display: grid;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mute);
+}
+.field-error {
+  color: var(--rex);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tog {
+  appearance: none;
+  width: 42px;
+  height: 24px;
+  border-radius: 20px;
+  background: var(--line);
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0;
+}
+.tog::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.15s;
+}
+.tog:checked {
+  background: var(--leaf);
+}
+.tog:checked::after {
+  left: 21px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+@media (max-width: 860px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+.full {
+  grid-column: 1 / -1;
+  margin: 0;
+}

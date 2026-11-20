@@ -1,0 +1,75 @@
+<div class="head">
+  <div>
+    <h1>Objectifs</h1>
+    <p>
+      Fixez combien de niveaux 40 vous visez par espèce, en masse par rareté. Ajustez ensuite espèce
+      par espèce dans l'onglet Espèces.
+    </p>
+  </div>
+  <div class="toolbar presets" role="group" aria-label="Objectif global">
+    <span class="note">Tout mettre à</span>
+    @for (p of presets; track p) {
+      <button
+        type="button"
+        class="seg"
+        [disabled]="busy()"
+        (click)="apply(null, p, 'Toutes les espèces')"
+      >
+        {{ p }}
+      </button>
+    }
+  </div>
+</div>
+
+@if (message(); as m) {
+  <p class="success" role="status">{{ m }}</p>
+}
+@if (error(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+
+<div class="grid cards">
+  @for (r of stats(); track r.code) {
+    <section class="card rcard" [style.--c]="'var(--r' + r.code + ')'">
+      <h2>{{ r.label }}</h2>
+      <p class="note">{{ r.count }} espèces · {{ r.tracked }} suivies</p>
+      <div class="step">
+        <label [for]="'target-' + r.code">Niveaux 40 par espèce</label>
+        <input type="number" [id]="'target-' + r.code" [formField]="targetsForm[r.code]" />
+        <button
+          type="button"
+          [disabled]="busy() || targetsForm[r.code]().invalid()"
+          (click)="apply(r.code, model()[r.code], r.label)"
+        >
+          Appliquer
+        </button>
+        @if (targetsForm[r.code]().invalid()) {
+          <span class="field-error">{{ targetsForm[r.code]().errors()[0].message }}</span>
+        }
+      </div>
+      <app-progress-bar
+        [value]="r.completion"
+        [color]="'var(--r' + r.code + ')'"
+        [label]="'Complétion ' + r.label"
+      />
+      <div class="line">
+        <span>Complétion</span><b>{{ r.completion | pct }}</b>
+      </div>
+      <div class="line">
+        <span>Niveaux 40</span><b>{{ r.lvl40 }} / {{ r.lvl40Target }}</b>
+      </div>
+      <div class="line">
+        <span>Reste en ADN</span><b class="num">{{ r.dnaRemaining | short }}</b>
+      </div>
+      <div class="line">
+        <span>Reste en super ADN</span><b class="num sup">{{ r.superDnaRemaining | short }}</b>
+      </div>
+      <div class="line">
+        <span>Reste en ambre</span><b class="num am">{{ r.amberRemaining | short }}</b>
+      </div>
+      @if (r.unknownCost) {
+        <p class="note rx">{{ r.unknownCost }} espèces sans coût renseigné : non chiffrées.</p>
+      }
+    </section>
+  }
+</div>

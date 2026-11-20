@@ -1,0 +1,17 @@
+@for (r of rarities(); track r.code) {
+  <div class="group">
+    <div class="row">
+      <app-rarity-chip [code]="r.code" />
+      <app-progress-bar
+        [value]="r.completion"
+        [color]="'var(--r' + r.code + ')'"
+        [label]="'Complétion ' + r.label"
+      />
+      <b class="num">{{ r.completion | pct }}</b>
+    </div>
+    <div class="note">
+      {{ r.done }}/{{ r.tracked }} terminées · reste {{ r.dnaRemaining | short }} ADN ·
+      {{ r.superDnaRemaining | short }} super ADN · {{ r.amberRemaining | short }} ambre
+    </div>
+  </div>
+}

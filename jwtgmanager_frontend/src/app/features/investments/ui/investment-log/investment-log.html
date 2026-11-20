@@ -1,0 +1,51 @@
+<div class="head">
+  <h2>Journal</h2>
+  <span class="note">
+    {{ investments().length }} opérations · {{ totals().DNA | short }} ADN ·
+    {{ totals().SUPER_DNA | short }} super ADN · {{ totals().AMBER | short }} ambre
+  </span>
+</div>
+<div class="scroll">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Espèce</th>
+        <th scope="col">Montée</th>
+        <th scope="col" class="num">Qté</th>
+        <th scope="col" class="num">Coût</th>
+        <th scope="col"><span class="visually-hidden">Action</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (i of investments(); track i.id) {
+        <tr>
+          <td>{{ i.investedOn | date: 'dd/MM/y' }}</td>
+          <td>{{ i.speciesName }}</td>
+          <td>
+            {{ i.fromLevel === null ? 'Nouveau' : 'Niv. ' + i.fromLevel }} → Niv. {{ i.toLevel }}
+          </td>
+          <td class="num">{{ i.quantity }}</td>
+          <td class="num">{{ i.cost | short }} <app-currency-tag [currency]="i.currency" /></td>
+          <td>
+            <button
+              type="button"
+              class="ghost small"
+              [disabled]="busyId() === i.id"
+              (click)="cancelled.emit(i.id)"
+            >
+              Annuler
+            </button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="empty">
+            Aucun investissement enregistré pour l'instant. Enregistrez votre première montée
+            ci-dessus.
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

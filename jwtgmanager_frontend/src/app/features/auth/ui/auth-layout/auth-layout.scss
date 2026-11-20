@@ -1,0 +1,32 @@
+.auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 40px;
+  align-items: center;
+  padding: clamp(20px, 5vw, 64px);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.intro {
+  color: var(--ink);
+}
+.intro h1 {
+  margin: 14px 0 10px;
+}
+.intro p {
+  color: var(--mute);
+  font-size: 18px;
+  max-width: 46ch;
+}
+.panel {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+}
+@media (max-width: 760px) {
+  .auth {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

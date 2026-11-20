@@ -1,0 +1,15 @@
+<ul class="list">
+  @for (s of species(); track s.speciesId) {
+    <li>
+      <span
+        ><b>{{ s.name }}</b
+        ><br /><app-rarity-chip [code]="s.rarityCode" /> · {{ s.progress | pct }}</span
+      >
+      <span class="num"
+        >{{ s.remaining | short }} <app-currency-tag [currency]="s.currency"
+      /></span>
+    </li>
+  } @empty {
+    <li class="empty">Tout est terminé pour ce filtre.</li>
+  }
+</ul>

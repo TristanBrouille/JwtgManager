@@ -1,0 +1,26 @@
+<form class="form" (submit)="onSubmit($event)" novalidate>
+  <label>
+    ADN gagné / semaine
+    <input type="number" step="1000" [formField]="budgetForm.weeklyDna" />
+    @if (budgetForm.weeklyDna().invalid()) {
+      <span class="field-error">{{ budgetForm.weeklyDna().errors()[0].message }}</span>
+    }
+  </label>
+  <label>
+    Super ADN gagné / semaine
+    <input type="number" step="100" [formField]="budgetForm.weeklySuperDna" />
+    @if (budgetForm.weeklySuperDna().invalid()) {
+      <span class="field-error">{{ budgetForm.weeklySuperDna().errors()[0].message }}</span>
+    }
+  </label>
+  <label>
+    Ambre gagné / semaine
+    <input type="number" step="1000" [formField]="budgetForm.weeklyAmber" />
+    @if (budgetForm.weeklyAmber().invalid()) {
+      <span class="field-error">{{ budgetForm.weeklyAmber().errors()[0].message }}</span>
+    }
+  </label>
+  <button type="submit" class="full" [disabled]="saving() || budgetForm().invalid()">
+    {{ saving() ? 'Enregistrement…' : 'Enregistrer le budget' }}
+  </button>
+</form>

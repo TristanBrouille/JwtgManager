@@ -1,0 +1,110 @@
+.app {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  min-height: 100vh;
+}
+aside {
+  background: var(--side);
+  color: var(--sideink);
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0 8px 18px;
+  color: inherit;
+  text-decoration: none;
+  font:
+    800 22px/1 'Barlow Condensed',
+    sans-serif;
+}
+.brand svg {
+  flex: none;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+nav a {
+  color: inherit;
+  text-decoration: none;
+  padding: 11px 12px;
+  border-radius: 9px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+}
+nav a:hover {
+  background: #ffffff14;
+}
+nav a.on {
+  background: #5cc98b;
+  color: #0b1711;
+}
+nav a small {
+  font-weight: 500;
+  opacity: 0.75;
+}
+.sidefoot {
+  margin-top: auto;
+  font-size: 13px;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+}
+.sidefoot button {
+  color: var(--sideink);
+  border-color: #ffffff30;
+}
+main {
+  padding: clamp(20px, 3vw, 40px) max(3vw, 16px);
+  max-width: 1320px;
+  width: 100%;
+}
+@media (max-width: 860px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  aside {
+    height: auto;
+    z-index: 5;
+    padding: 10px 12px;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .brand {
+    padding: 0 6px 0 0;
+    font-size: 19px;
+    flex: none;
+  }
+  nav {
+    flex-direction: row;
+    flex: none;
+  }
+  nav a {
+    white-space: nowrap;
+    padding: 8px 12px;
+    flex: none;
+  }
+  nav a small {
+    display: none;
+  }
+  .sidefoot {
+    margin: 0;
+    flex: none;
+  }
+  .sidefoot span {
+    display: none;
+  }
+}

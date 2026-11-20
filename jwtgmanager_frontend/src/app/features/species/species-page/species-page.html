@@ -1,0 +1,67 @@
+<div class="head">
+  <div>
+    <h1>Espèces</h1>
+    <p>
+      Saisissez vos spécimens à chaque palier et votre objectif de niveaux 40. Un palier coûte 1×
+      (niv. 10), 2× (20), 4× (30) ou 8× (40) le coût unitaire, payé en ADN (super ADN pour un super
+      hybride) si l'espèce est débloquée, sinon en ambre (en ADN tant que le coût en ambre n'est pas
+      renseigné).
+    </p>
+  </div>
+</div>
+
+<div class="toolbar">
+  <input
+    type="search"
+    placeholder="Rechercher une espèce…"
+    aria-label="Rechercher une espèce"
+    [value]="query()"
+    (input)="onQuery($event)"
+  />
+  <select aria-label="Filtrer par rareté" (change)="onRarity($event)">
+    <option value="">Toutes raretés</option>
+    @for (r of catalog.rarities.value(); track r.code) {
+      <option [value]="r.code">{{ r.label }}</option>
+    }
+  </select>
+  <select aria-label="Filtrer par type" (change)="onKind($event)">
+    @for (k of kindFilters; track k.value) {
+      <option [value]="k.value">{{ k.label }}</option>
+    }
+  </select>
+  <select aria-label="Filtrer par déblocage" (change)="onLock($event)">
+    @for (f of lockFilters; track f.value) {
+      <option [value]="f.value">{{ f.label }}</option>
+    }
+  </select>
+  <select aria-label="Filtrer par statut" (change)="onStatus($event)">
+    <option value="">Tous statuts</option>
+    <option value="done">Terminées</option>
+    <option value="progress">En cours</option>
+    <option value="todo">Pas commencées</option>
+    <option value="nocost">Coût à renseigner</option>
+  </select>
+  <select aria-label="Trier" (change)="onSort($event)">
+    <option value="cost">Tri : coût unitaire</option>
+    <option value="rest">Tri : reste à investir</option>
+    <option value="progress">Tri : progression</option>
+    <option value="name">Tri : nom</option>
+  </select>
+</div>
+
+<p class="legend note">
+  <span class="sw"></span> Débloquée ({{ lockCounts().UNLOCKED }})
+  <span class="sw amber"></span> Bloquée, achetable en ambre ({{ lockCounts().LOCKED_AMBER }})
+  <span class="sw red"></span> Bloquée sans coût ambre ({{ lockCounts().LOCKED }})
+</p>
+
+@if (error(); as message) {
+  <p class="error-box" role="alert">{{ message }}</p>
+}
+
+@if (loading() && total() === 0) {
+  <p class="empty">Chargement de votre collection…</p>
+} @else {
+  <app-species-table [rows]="rows()" (changed)="onChange($event)" />
+  <p class="note">{{ rows().length }} espèces affichées sur {{ total() }}.</p>
+}

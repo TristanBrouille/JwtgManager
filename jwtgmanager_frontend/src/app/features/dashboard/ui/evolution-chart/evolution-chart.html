@@ -1,0 +1,42 @@
+<svg
+  [attr.viewBox]="'0 0 ' + width() + ' ' + height"
+  [attr.height]="height"
+  role="img"
+  aria-label="Évolution de la complétion de la collection"
+>
+  @for (tick of ticks(); track tick.label) {
+    <line
+      [attr.x1]="gridLeft"
+      [attr.x2]="gridRight()"
+      [attr.y1]="tick.y"
+      [attr.y2]="tick.y"
+      class="grid"
+    />
+    <text [attr.x]="gridLeft - 8" [attr.y]="tick.y + 4" text-anchor="end" class="tick">
+      {{ tick.label }}
+    </text>
+  }
+  @if (area()) {
+    <path [attr.d]="area()" class="area" />
+  }
+  <path [attr.d]="line()" class="line" />
+  @for (p of plotted(); track p.label; let i = $index) {
+    <circle
+      [attr.cx]="p.x"
+      [attr.cy]="p.y"
+      [attr.r]="p.last ? 6 : 3.5"
+      [class.last]="p.last"
+      class="dot"
+    />
+    @if (i % labelEvery() === 0 || p.last) {
+      <text [attr.x]="p.x" [attr.y]="height - 8" text-anchor="middle" class="tick">
+        {{ p.label }}
+      </text>
+    }
+  }
+  @if (lastPoint(); as p) {
+    <text [attr.x]="p.x - 10" [attr.y]="p.y - 12" text-anchor="end" class="value">
+      {{ (p.value * 100).toFixed(1).replace('.', ',') }} %
+    </text>
+  }
+</svg>

@@ -1,0 +1,25 @@
+<app-auth-layout heading="Connexion">
+  <form class="form" (submit)="onSubmit($event)" novalidate>
+    <label class="full">
+      E-mail
+      <input type="email" autocomplete="email" [formField]="loginForm.email" />
+      @if (loginForm.email().touched() && loginForm.email().invalid()) {
+        <span class="field-error">{{ loginForm.email().errors()[0].message }}</span>
+      }
+    </label>
+    <label class="full">
+      Mot de passe
+      <input type="password" autocomplete="current-password" [formField]="loginForm.password" />
+      @if (loginForm.password().touched() && loginForm.password().invalid()) {
+        <span class="field-error">{{ loginForm.password().errors()[0].message }}</span>
+      }
+    </label>
+    @if (error(); as message) {
+      <p class="error-box full" role="alert">{{ message }}</p>
+    }
+    <button type="submit" class="full" [disabled]="loginForm().submitting()">
+      {{ loginForm().submitting() ? 'Connexion…' : 'Se connecter' }}
+    </button>
+  </form>
+  <p class="note">Pas encore de compte ? <a routerLink="/inscription">Créer un compte</a></p>
+</app-auth-layout>

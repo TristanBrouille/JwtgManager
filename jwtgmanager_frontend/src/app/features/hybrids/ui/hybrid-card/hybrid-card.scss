@@ -1,0 +1,52 @@
+.card {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+  align-content: start;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 20px;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.badge.ok {
+  background: var(--leaf);
+  color: var(--on-leaf);
+  border-color: transparent;
+}
+.badge input {
+  margin: 0;
+}
+.par {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 80px 44px;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+.card.super {
+  border-color: var(--rex);
+}
+.kind {
+  color: var(--rex);
+  font-weight: 700;
+  font-size: 13px;
+}
+.tag {
+  color: var(--mute);
+  font-size: 12px;
+}

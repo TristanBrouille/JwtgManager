@@ -1,0 +1,18 @@
+.cur {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+  background: var(--leafbg);
+  color: var(--leaf);
+}
+.cur.am {
+  background: var(--amberbg);
+  color: var(--amber);
+}
+.cur.sup {
+  background: var(--superbg);
+  color: var(--super);
+}

@@ -1,0 +1,50 @@
+<div class="head">
+  <div>
+    <h1>Hybrides</h1>
+    <p>
+      {{ unlockedCount() }} débloqués sur {{ total() }}, dont {{ superCount() }} super hybrides
+      (hybrides d'hybrides). Chaque hybride avec les espèces qui le composent et leur progression.
+      Cochez quand il est débloqué.
+    </p>
+  </div>
+  <div class="filter-groups">
+    <div ngToolbar class="filters" aria-label="Filtrer par type d'hybride">
+      @for (k of kinds; track k.value) {
+        <button
+          ngToolbarWidget
+          type="button"
+          class="seg"
+          [attr.aria-pressed]="kind() === k.value"
+          (click)="kind.set(k.value)"
+        >
+          {{ k.label }}
+        </button>
+      }
+    </div>
+    <div ngToolbar class="filters" aria-label="Filtrer par déblocage">
+      @for (f of filters; track f.value) {
+        <button
+          ngToolbarWidget
+          type="button"
+          class="seg"
+          [attr.aria-pressed]="filter() === f.value"
+          (click)="filter.set(f.value)"
+        >
+          {{ f.label }}
+        </button>
+      }
+    </div>
+  </div>
+</div>
+
+@if (error(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+
+<div class="hyb">
+  @for (entry of visible(); track entry.hybrid.speciesId) {
+    <app-hybrid-card [entry]="entry" (toggled)="toggle($event)" />
+  } @empty {
+    <p class="empty">Aucun hybride pour ce filtre.</p>
+  }
+</div>

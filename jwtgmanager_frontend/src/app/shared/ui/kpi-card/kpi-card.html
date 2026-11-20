@@ -1,0 +1,7 @@
+<div class="card kpi">
+  <div class="l">{{ label() }}</div>
+  <div class="v" [class.am]="tone() === 'amber'" [class.sup]="tone() === 'super'">
+    {{ value() }}
+  </div>
+  <div class="s"><ng-content /></div>
+</div>

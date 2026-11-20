@@ -1,0 +1,15 @@
+@for (row of rows(); track row.currency) {
+  <div class="row">
+    <app-currency-tag [currency]="row.currency" />
+    <span>
+      @if (row.projection.remaining <= 0) {
+        Objectif atteint
+      } @else if (row.projection.weeks === null) {
+        <a routerLink="/investissements">Renseignez un revenu</a>
+      } @else {
+        {{ row.projection.weeks }} semaines · {{ row.projection.finishDate | date: 'MMMM y' }}
+      }
+    </span>
+    <b class="num">{{ row.projection.remaining | short }}</b>
+  </div>
+}

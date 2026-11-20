@@ -1,0 +1,36 @@
+<div class="favs">
+  @for (s of favorites(); track s.speciesId) {
+    <a
+      class="fav"
+      routerLink="/investissements"
+      [queryParams]="{ espece: s.speciesId }"
+      [attr.aria-label]="'Accès rapide : ' + s.name"
+    >
+      <span class="top">
+        <b>{{ s.name }}</b>
+        <span class="pct">{{ s.progress | pct }}</span>
+      </span>
+      <app-progress-bar [value]="s.progress" [label]="'Progression ' + s.name" />
+      <span class="note">
+        <app-rarity-chip [code]="s.rarityCode" /> · 10:{{ s.lvl10 }} · 20:{{ s.lvl20 }} · 30:{{
+          s.lvl30
+        }}
+        · 40:{{ s.lvl40 }}
+      </span>
+      <span class="note">
+        @if (s.done) {
+          <span class="up">Terminée</span>
+        } @else if (s.unitCost === null) {
+          Coût non renseigné
+        } @else {
+          Reste {{ s.remaining | short }} <app-currency-tag [currency]="s.currency" />
+        }
+      </span>
+    </a>
+  } @empty {
+    <p class="empty">
+      Aucun favori. Épinglez des espèces dans
+      <a routerLink="/investissements">Investissements</a> pour les retrouver ici.
+    </p>
+  }
+</div>

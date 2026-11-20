@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  width: 100%;
+}
+svg {
+  display: block;
+  width: 100%;
+}
+.grid {
+  stroke: var(--line);
+}
+.tick {
+  font-size: 12px;
+  fill: var(--mute);
+}
+.area {
+  fill: var(--leaf);
+  opacity: 0.14;
+}
+.line {
+  fill: none;
+  stroke: var(--leaf);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.dot {
+  fill: var(--leaf);
+  stroke: var(--panel);
+  stroke-width: 2;
+}
+.dot.last {
+  fill: var(--rex);
+}
+.value {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--ink);
+}

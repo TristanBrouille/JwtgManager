@@ -1,0 +1,90 @@
+<div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Espèce</th>
+        <th scope="col">Débloquée</th>
+        <th scope="col" class="num">Coût / palier</th>
+        <th scope="col" class="num">Niv. 10</th>
+        <th scope="col" class="num">Niv. 20</th>
+        <th scope="col" class="num">Niv. 30</th>
+        <th scope="col" class="num">Niv. 40</th>
+        <th scope="col">Progression</th>
+        <th scope="col" class="num">Investi</th>
+        <th scope="col" class="num">Reste</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.speciesId) {
+        <tr
+          [class.row-amber]="row.lock === 'LOCKED_AMBER'"
+          [class.row-locked]="row.lock === 'LOCKED'"
+        >
+          <td class="nm">
+            {{ row.name }}
+            <small
+              ><app-rarity-chip [code]="row.rarityCode" />
+              @if (row.hybridKind !== 'NONE') {
+                ·
+                <span [class.super]="row.hybridKind === 'SUPER_HYBRID'">{{
+                  kindLabel[row.hybridKind]
+                }}</span>
+              }
+            </small>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              class="tog"
+              [checked]="row.unlocked"
+              (change)="onUnlocked(row, $event)"
+              [attr.aria-label]="row.name + ' débloquée'"
+            />
+          </td>
+          <td class="num">
+            @if (row.unitCost !== null) {
+              {{ row.unitCost | short }}
+            } @else {
+              <span class="rx">à renseigner</span>
+            }
+            <app-currency-tag [currency]="row.currency" />
+          </td>
+          @for (level of levels; track level.field) {
+            <td class="num">
+              <input
+                type="number"
+                min="0"
+                max="99"
+                [value]="row[level.field]"
+                (change)="onCount(row, level.field, $event)"
+                [attr.aria-label]="row.name + ' ' + level.label"
+              />
+            </td>
+          }
+          <td>
+            <app-progress-bar
+              [value]="row.progress"
+              [label]="'Progression ' + row.name"
+              [color]="row.done ? null : 'var(--r' + row.rarityCode + ')'"
+            />
+            <span class="note">{{ row.targetLvl40 ? (row.progress | pct) : 'non suivie' }}</span>
+          </td>
+          <td class="num">{{ row.invested | short }}</td>
+          <td class="num">
+            @if (row.done) {
+              <span class="up" aria-label="terminé">✓</span>
+            } @else if (row.unitCost === null) {
+              <span class="note">non chiffré</span>
+            } @else {
+              {{ row.remaining | short }}
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="10" class="empty">Aucune espèce ne correspond.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
