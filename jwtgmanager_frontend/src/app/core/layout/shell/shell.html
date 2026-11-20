@@ -15,6 +15,9 @@
           @if (link.path === '/especes' && speciesCount()) {
             <small>{{ speciesCount() }}</small>
           }
+          @if (link.path === '/fusion' && fusionCount()) {
+            <small>{{ fusionCount() }}</small>
+          }
           @if (link.path === '/hybrides' && speciesCount()) {
             <small>{{ hybridsLabel() }}</small>
           }

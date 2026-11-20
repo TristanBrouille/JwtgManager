@@ -1,0 +1,29 @@
+<article class="card fcard" [attr.aria-busy]="busy()">
+  <header>
+    <h3>{{ species().name }}</h3>
+    <span class="note">
+      <app-rarity-chip [code]="species().rarityCode" /> ·
+      <app-currency-tag [currency]="species().currency" /> ·
+      {{ species().progress | pct }}
+    </span>
+  </header>
+  <p class="counts note">
+    Niv. 10 : <b>{{ species().lvl10 }}</b> · Niv. 20 : <b>{{ species().lvl20 }}</b> · Niv. 30 :
+    <b>{{ species().lvl30 }}</b> · Niv. 40 : <b>{{ species().lvl40 }}</b>
+  </p>
+  <div class="actions">
+    @for (o of options(); track o.from) {
+      <button
+        type="button"
+        [disabled]="busy()"
+        (click)="fused.emit(o.from)"
+        [attr.aria-label]="
+          'Fusionner 2 ' + species().name + ' niveau ' + o.from + ' en 1 niveau ' + o.to
+        "
+      >
+        2 × niv. {{ o.from }} → 1 × niv. {{ o.to }}
+        <small>{{ o.possible }} possible{{ o.possible > 1 ? 's' : '' }}</small>
+      </button>
+    }
+  </div>
+</article>

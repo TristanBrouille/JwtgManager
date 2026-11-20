@@ -117,6 +117,16 @@ public class CollectionService {
         return new LevelUpResult(species.name(), cost, currency.name());
     }
 
+    /** Fusion : 2 spécimens de {@code level} deviennent 1 spécimen du palier suivant. */
+    @Transactional
+    public SpeciesProgressView fuse(UUID userId, int speciesId, Level level) {
+        PlayerSpecies ps = find(userId, speciesId);
+        ps.fuse(level);
+        playerSpecies.save(ps);
+        events.publishEvent(new CollectionChanged(userId));
+        return toView(ps, catalog.species(speciesId));
+    }
+
     @Transactional
     public void revertLevelUp(UUID userId, int speciesId, Optional<Level> from, Level to, int quantity) {
         PlayerSpecies ps = find(userId, speciesId);

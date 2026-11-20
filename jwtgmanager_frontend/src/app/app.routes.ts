@@ -48,6 +48,12 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'fusion',
+        title: 'Fusion · JWTG Manager',
+        loadComponent: () =>
+          import('./features/fusion/fusion-page/fusion-page').then((m) => m.FusionPage),
+      },
+      {
         path: 'hybrides',
         title: 'Hybrides · JWTG Manager',
         loadComponent: () =>

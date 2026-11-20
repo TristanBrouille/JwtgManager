@@ -1,0 +1,42 @@
+<div class="head">
+  <div>
+    <h1>Fusion</h1>
+    <p>
+      Deux spécimens d'un même palier donnent un spécimen du palier suivant : 2 niveaux 10 → 1
+      niveau 20, 2 niveaux 20 → 1 niveau 30, 2 niveaux 30 → 1 niveau 40. Les niveaux 40 ne se
+      fusionnent pas. L'ADN investi ne change pas, seul l'avancement progresse.
+    </p>
+  </div>
+  <select aria-label="Filtrer par rareté" (change)="onRarity($event)">
+    <option value="">Toutes raretés</option>
+    @for (r of catalog.rarities.value(); track r.code) {
+      <option [value]="r.code">{{ r.label }}</option>
+    }
+  </select>
+</div>
+
+@if (message(); as m) {
+  <p class="success" role="status">{{ m }}</p>
+}
+@if (error(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+
+@if (loading() && candidates().length === 0) {
+  <p class="empty">Chargement de votre collection…</p>
+} @else {
+  <p class="note">{{ candidates().length }} espèces ont au moins une fusion possible.</p>
+  <div class="grid cards">
+    @for (s of candidates(); track s.speciesId) {
+      <app-fusion-card
+        [species]="s"
+        [busy]="busyId() === s.speciesId"
+        (fused)="fuse(s.speciesId, $event)"
+      />
+    } @empty {
+      <p class="empty">
+        Aucune fusion possible : il faut au moins 2 spécimens au niveau 10, 20 ou 30.
+      </p>
+    }
+  </div>
+}

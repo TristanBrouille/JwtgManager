@@ -21,6 +21,7 @@ JWTG Manager est un SaaS qui aide un joueur de Jurassic World le jeu à suivre l
 - Unités payées = n10 + 2·n20 + 4·n30 + 8·n40 ; investi = unités payées × coût.
 - Avancement (formule « Avancement » de JWTG.xlsx) = (n10/48 + n20/6 + 5·n30/12 + n40) / objectif niv. 40, plafonné à 99 % tant que l'objectif de niveaux 40 n'est pas réellement atteint. Ne jamais calculer l'avancement en unités de coût : 4 niv. 20 + 4 niv. 30 ne valent pas 3 niv. 40.
 - Reste (colonne « Rest » de l'Excel) = max(0, 8 × objectif − unités payées) × coût : tout l'ADN investi compte, quel que soit le palier (6 niveaux 30 = reste 0). Le reste peut donc valoir 0 avant la fin : terminé = avancement à 100 % ET reste à 0.
+- Fusion : 2 spécimens d'un palier donnent 1 spécimen du palier suivant (10→20, 20→30, 30→40), jamais au niveau 40 (`SpecimenCounts.fuse`). Les unités investies ne changent pas, seul l'avancement progresse.
 - Complétion d'un groupe (global, rareté) = moyenne des avancements des espèces suivies (ligne « Moyenne » de l'Excel).
 - Chaque espèce a un `hybrid_kind` (enum `HybridKind`) : `NONE`, `HYBRID` ou `SUPER_HYBRID`. Un super hybride est un hybride d'hybrides (au moins un composant est lui-même un hybride) : ne jamais confondre les deux. Les composants sont dans `hybrid_recipe`. Dans JWTG.xlsx, bleu = hybride, rouge = super hybride.
 - Ces règles vivent dans le domaine (objets valeur / services de domaine), jamais dans un contrôleur ni en SQL seul.

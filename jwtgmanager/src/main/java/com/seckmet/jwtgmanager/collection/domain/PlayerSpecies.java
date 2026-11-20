@@ -69,6 +69,12 @@ public class PlayerSpecies {
         touch();
     }
 
+    /** Fusionne 2 spécimens d'un palier en 1 du palier suivant. */
+    public void fuse(Level level) {
+        counts = counts.fuse(level);
+        touch();
+    }
+
     public void revertLevelUp(Optional<Level> from, Level to, int quantity) {
         counts = counts.revertLevelUp(from, to, quantity);
         touch();

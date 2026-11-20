@@ -4,12 +4,14 @@ import com.seckmet.jwtgmanager.collection.application.CollectionService;
 import com.seckmet.jwtgmanager.collection.application.SettingsView;
 import com.seckmet.jwtgmanager.collection.application.SpeciesProgressView;
 import com.seckmet.jwtgmanager.collection.application.UpdateSpeciesCommand;
+import com.seckmet.jwtgmanager.shared.domain.Level;
 import com.seckmet.jwtgmanager.shared.exposition.CurrentUser;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +46,13 @@ public class CollectionController {
     public SpeciesProgressResponse favorite(@AuthenticationPrincipal Jwt jwt, @PathVariable int speciesId,
                                             @RequestBody FavoriteRequest r) {
         return toResponse(collection.setFavorite(CurrentUser.id(jwt), speciesId, r.favorite()));
+    }
+
+    /** Fusionne 2 spécimens du niveau {@code level} (10, 20 ou 30) en 1 du palier suivant. */
+    @PostMapping("/collection/{speciesId}/fusions")
+    public SpeciesProgressResponse fuse(@AuthenticationPrincipal Jwt jwt, @PathVariable int speciesId,
+                                        @RequestBody FusionRequest r) {
+        return toResponse(collection.fuse(CurrentUser.id(jwt), speciesId, Level.of(r.level())));
     }
 
     @PutMapping("/collection/targets")

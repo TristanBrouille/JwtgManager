@@ -63,6 +63,19 @@ export class CollectionService {
     );
   }
 
+  /** Fusionne 2 spécimens du niveau {@code level} (10, 20 ou 30) en 1 du palier suivant. */
+  async fuse(speciesId: number, level: 10 | 20 | 30): Promise<SpeciesProgress> {
+    const updated = await firstValueFrom(
+      this.http.post<SpeciesProgress>(`${environment.apiUrl}/collection/${speciesId}/fusions`, {
+        level,
+      }),
+    );
+    this.collection.value.update((list) =>
+      list.map((s) => (s.speciesId === speciesId ? updated : s)),
+    );
+    return updated;
+  }
+
   async setTargets(rarityCode: RarityCode | null, targetLvl40: number): Promise<number> {
     const result = await firstValueFrom(
       this.http.put<{ updatedSpecies: number }>(`${environment.apiUrl}/collection/targets`, {

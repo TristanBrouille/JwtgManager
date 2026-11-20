@@ -53,6 +53,26 @@ public record SpecimenCounts(int lvl10, int lvl20, int lvl30, int lvl40) {
         return lvl40 >= target;
     }
 
+    /** Nombre de spécimens nécessaires pour une fusion. */
+    public static final int FUSION_SIZE = 2;
+
+    /** Une fusion est possible à ce palier (au moins 2 spécimens, et pas au niveau 40). */
+    public boolean canFuse(Level level) {
+        return level.next().isPresent() && at(level) >= FUSION_SIZE;
+    }
+
+    /** Fusionne 2 spécimens de {@code level} en 1 spécimen du palier suivant. */
+    public SpecimenCounts fuse(Level level) {
+        Level target = level.next()
+                .orElseThrow(() -> new FusionNotPossibleException("Impossible de fusionner des niveaux 40"));
+        if (at(level) < FUSION_SIZE) {
+            throw new FusionNotPossibleException("Il faut au moins " + FUSION_SIZE + " spécimens au niveau "
+                    + level.value() + " pour fusionner (" + at(level) + " disponible(s))");
+        }
+        SpecimenCounts result = with(level, at(level) - FUSION_SIZE);
+        return result.with(target, result.at(target) + 1);
+    }
+
     /**
      * Fait monter {@code quantity} spécimens de {@code from} (vide = nouveau spécimen) vers {@code to}.
      */

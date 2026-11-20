@@ -41,6 +41,30 @@ class SpecimenCountsTest {
     }
 
     @Test
+    void fuse_turnsTwoSpecimensIntoOneOfTheNextLevel() {
+        assertThat(new SpecimenCounts(0, 3, 0, 0).fuse(Level.L20)).isEqualTo(new SpecimenCounts(0, 1, 1, 0));
+        assertThat(new SpecimenCounts(2, 0, 0, 0).fuse(Level.L10)).isEqualTo(new SpecimenCounts(0, 1, 0, 0));
+        assertThat(new SpecimenCounts(0, 0, 2, 0).fuse(Level.L30)).isEqualTo(new SpecimenCounts(0, 0, 0, 1));
+    }
+
+    @Test
+    void fuse_keepsTheInvestedUnits() {
+        SpecimenCounts before = new SpecimenCounts(4, 2, 2, 0);
+        assertThat(before.fuse(Level.L10).units()).isEqualTo(before.units());
+        assertThat(before.fuse(Level.L30).units()).isEqualTo(before.units());
+    }
+
+    @Test
+    void fuse_isRefusedWithOneSpecimenOrAtLevel40() {
+        assertThat(new SpecimenCounts(0, 1, 0, 0).canFuse(Level.L20)).isFalse();
+        assertThat(new SpecimenCounts(0, 0, 0, 5).canFuse(Level.L40)).isFalse();
+        assertThatThrownBy(() -> new SpecimenCounts(0, 1, 0, 0).fuse(Level.L20))
+                .isInstanceOf(FusionNotPossibleException.class);
+        assertThatThrownBy(() -> new SpecimenCounts(0, 0, 0, 2).fuse(Level.L40))
+                .isInstanceOf(FusionNotPossibleException.class);
+    }
+
+    @Test
     void levelUp_fromNewSpecimen_addsAtTargetLevel() {
         SpecimenCounts result = SpecimenCounts.NONE.levelUp(Optional.empty(), Level.L40, 2);
         assertThat(result).isEqualTo(new SpecimenCounts(0, 0, 0, 2));

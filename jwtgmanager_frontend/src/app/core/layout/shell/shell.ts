@@ -16,6 +16,12 @@ export class Shell {
   protected readonly auth = inject(AuthService);
 
   protected readonly speciesCount = computed(() => this.collection.collection.value().length);
+  /** Espèces ayant au moins une fusion possible (2 spécimens ou plus au niveau 10, 20 ou 30). */
+  protected readonly fusionCount = computed(
+    () =>
+      this.collection.collection.value().filter((s) => s.lvl10 >= 2 || s.lvl20 >= 2 || s.lvl30 >= 2)
+        .length,
+  );
   protected readonly hybridsLabel = computed(() => {
     const unlocked = new Set(
       this.collection.collection
@@ -32,6 +38,7 @@ export class Shell {
     { path: '/especes', label: 'Espèces' },
     { path: '/objectifs', label: 'Objectifs' },
     { path: '/investissements', label: 'Investissements' },
+    { path: '/fusion', label: 'Fusion' },
     { path: '/hybrides', label: 'Hybrides' },
   ];
 }

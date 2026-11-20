@@ -55,7 +55,7 @@ public class ProgressService {
                 .toList();
 
         List<DashboardView.ClosestSpecies> closest = lines.stream()
-                .filter(l -> !l.done() && l.costKnown())
+                .filter(l -> !l.done() && l.costKnown() && l.currency() == Currency.DNA)
                 .sorted(Comparator.comparingLong(ProgressLine::remaining))
                 .limit(CLOSEST_LIMIT)
                 .map(l -> new DashboardView.ClosestSpecies(l.speciesId(), l.name(), l.rarityCode(), l.progress(),
