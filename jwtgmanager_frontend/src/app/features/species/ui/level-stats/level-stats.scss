@@ -1,0 +1,17 @@
+.lvl {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+img {
+  border-radius: 10px;
+  background: var(--panel2);
+  object-fit: contain;
+}
+th[scope='row'] {
+  text-align: left;
+}
+p {
+  margin: 10px 0 0;
+}

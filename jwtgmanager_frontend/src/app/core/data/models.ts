@@ -175,3 +175,43 @@ export function lockState(s: SpeciesProgress): LockState {
 
 /** Multiplicateur de coût de chaque palier (niv. 10, 20, 30, 40). */
 export const LEVEL_MULTIPLIER: Record<number, number> = { 10: 1, 20: 2, 30: 4, 40: 8 };
+
+/** Statistiques d'un palier (niveau 10, 20, 30 ou 40). */
+export interface CreatureLevel {
+  level: number;
+  health: number;
+  attack: number;
+  portraitUrl: string;
+}
+
+/** Fiche de jeu importée de paleo.gg ; les durées sont en minutes. */
+export interface CreatureSheet {
+  region: string | null;
+  creatureClass: string | null;
+  releaseDate: string | null;
+  levels: CreatureLevel[];
+  ferocity: number | null;
+  coins: number | null;
+  coinMinutes: number | null;
+  coinsPerMinute: number | null;
+  hatchMinutes: number | null;
+  dnaBuy: number | null;
+  dnaSell: number | null;
+  imageUrl: string;
+  sourceUrl: string;
+}
+
+export interface SpeciesDetail {
+  id: number;
+  name: string;
+  rarityCode: RarityCode;
+  hybridKind: HybridKind;
+  dnaCost: number | null;
+  amberCost: number | null;
+  /** Espèces qui composent cet hybride (vide pour une espèce de base). */
+  componentIds: number[];
+  /** Hybrides dont cette espèce est un composant. */
+  usedInIds: number[];
+  /** Null si aucune fiche de jeu n'a été importée pour cette espèce. */
+  sheet: CreatureSheet | null;
+}

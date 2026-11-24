@@ -1,0 +1,351 @@
+1|Triceratops|NONE|C
+2|Majungasaurus|NONE|C
+3|Alanka|NONE|C
+4|Tuojangosaure|NONE|C
+5|Limnocelis|NONE|C
+6|Labyrinthodonte|NONE|C
+7|Coloborhyncus|NONE|C
+8|Bonitasaura|NONE|C
+9|Argentinosaure|NONE|C
+10|Guanlong|NONE|C
+11|Pelecanimimus|NONE|C
+12|Tropeognathus|NONE|C
+13|Diplocaulus|NONE|C
+14|Hatzegopterix|NONE|C
+15|Utahraptor|NONE|C
+16|Alangasaure|HYBRID|C
+17|Limnorhynque|HYBRID|C
+18|Labyrinthosaure|HYBRID|C
+19|Pelecanipteryx|HYBRID|C
+20|Pelecachtylus|SUPER_HYBRID|C
+21|Allosaure|NONE|R
+22|Giganotosaure|NONE|R
+23|Irritator|NONE|R
+24|Nasutoceratops|NONE|R
+25|Dsungaripterus|NONE|R
+26|Gallimimus|NONE|R
+27|Pachycephalosaure|NONE|R
+28|Koolasuchus|NONE|R
+29|Corythosaure|NONE|R
+30|Pyroraptor|NONE|R
+31|Tapejara|NONE|R
+32|Dilophosaure|NONE|R
+33|Nundasuchus|NONE|R
+34|Tyrannotitan|NONE|R
+35|Carnotaurus|NONE|R
+36|Diplodocus|NONE|R
+37|Rhamphorgynchus|NONE|R
+38|Ophiacodon|NONE|R
+39|Monolophosaure|NONE|R
+40|Doplotator|HYBRID|R
+41|Nundagosaure|HYBRID|R
+42|Pachyceratops|HYBRID|R
+43|Ophiacomimus|HYBRID|R
+44|Carnoraptor|HYBRID|R
+45|Tapejalosaurus|HYBRID|R
+46|Diplosuchus|SUPER_HYBRID|R
+47|Dimetrocarnus|SUPER_HYBRID|R
+48|Tapejalocephalus|SUPER_HYBRID|R
+49|Euoplocephalus|NONE|E
+50|Zhejiangopterus|NONE|E
+51|Ankylosaure|NONE|E
+52|Parasaurolophus|NONE|E
+53|Rajasaurus|NONE|E
+54|Quetzalcoatlus|NONE|E
+55|Amphicyon|NONE|E
+56|Deodicurus|NONE|E
+57|Elasmotherium|NONE|E
+58|Megistotherium|NONE|E
+59|Metriorhynchus|NONE|E
+60|Sarkastodon|NONE|E
+61|Supersaurus|NONE|E
+62|Archaeotherium|NONE|E
+63|Spinausaurus|NONE|E
+64|Stegosaure|NONE|E
+65|Velocirapore|NONE|E
+66|Velociraptore Gen 2|NONE|E
+67|Aerotitan|NONE|E
+68|Deinotherium|NONE|E
+69|Entelodonte|NONE|E
+70|Kaprosuchus|NONE|E
+71|Postosuchus|NONE|E
+72|Synthetoceras|NONE|E
+73|Dakosaure|NONE|E
+74|Dolichorhynchops|NONE|E
+75|Onchopristis|NONE|E
+76|Leptocleidus|NONE|E
+77|Protostega|NONE|E
+78|Prognathodon|NONE|E
+79|Elasmosaure|NONE|E
+80|Helicoprion|NONE|E
+81|Mauisaurus|NONE|E
+82|Trinacromerum|NONE|E
+83|Xiphactinus|NONE|E
+84|Geosaure|NONE|E
+85|Baculite|NONE|E
+86|Psephoderma|NONE|E
+87|Tropeogopterus|HYBRID|E
+88|Parasaura|HYBRID|E
+89|Giganocephalus|HYBRID|E
+90|Metrialong|HYBRID|E
+91|Stegoceratops|HYBRID|E
+92|Spinoraptor|HYBRID|E
+93|Ankylodocus|HYBRID|E
+94|Suprannotitan|HYBRID|E
+95|Megistocurus|HYBRID|E
+96|Archeaophicyon|HYBRID|E
+97|Leptostega|HYBRID|E
+98|Xinathodon|HYBRID|E
+99|Dakoderma|HYBRID|E
+100|Geolasmosaurus|HYBRID|E
+101|Gigakylocephalus|SUPER_HYBRID|E
+102|Monostegotops|SUPER_HYBRID|E
+103|Spinotasuchus|SUPER_HYBRID|E
+104|Microposaure|NONE|L
+105|Suchomimus|NONE|L
+106|Unaysaurus|NONE|L
+107|Pteranodon|NONE|L
+108|Phorusrhacos|NONE|L
+109|Eremotherium|NONE|L
+110|Sarcosuchus|NONE|L
+111|Megaloceros|NONE|L
+112|Shunosaurus|NONE|L
+113|Ostafrikasaurus|NONE|L
+114|Diprotodon|NONE|L
+115|Indricotherium|NONE|L
+116|Ichtyostega|NONE|L
+117|Scolosaure|NONE|L
+118|Prionosuchus|NONE|L
+119|Therizinosaure|NONE|L
+120|Andrewsarchus|NONE|L
+121|Dimorphodon|NONE|L
+122|Dimetrodon|NONE|L
+123|Uintatherium|NONE|L
+124|Scaphognathus|NONE|L
+125|Glyptodon|NONE|L
+126|Tyrannosaure|NONE|L
+127|T-Rex Gen 2|NONE|L
+128|Lion Marsupial|NONE|L
+129|Ammonite|NONE|L
+130|Compsognathus|NONE|L
+131|Pliosaure|NONE|L
+132|Hyneria|NONE|L
+133|Dunkleosteus|NONE|L
+134|Hauffiosaurus|NONE|L
+135|Kronosaurus|NONE|L
+136|Leedsichthys|NONE|L
+137|Liopleurodon|NONE|L
+138|Plesiosaure|NONE|L
+139|Megalodon|NONE|L
+140|Kaiwhekea|NONE|L
+141|Styxosaurus|NONE|L
+142|Rhizodus|NONE|L
+143|Suchoripterus|HYBRID|L
+144|Unayrhynchus|HYBRID|L
+145|Koolasaurus|HYBRID|L
+146|Skoolasaure|HYBRID|L
+147|Entelorhacos|HYBRID|L
+148|Rajastega|HYBRID|L
+149|Andrewterium|HYBRID|L
+150|Indominus Rex|HYBRID|L
+151|Indominus Rex Gen 2|HYBRID|L
+152|Ostaposaure|HYBRID|L
+153|Indricoceros|HYBRID|L
+154|Hynecoprion|HYBRID|L
+155|Priotrodon|HYBRID|L
+156|Liosichtodon|HYBRID|L
+157|Skoonasaure|SUPER_HYBRID|L
+158|Indoraptor|SUPER_HYBRID|L
+159|Indoraptor Gen 2|SUPER_HYBRID|L
+160|Compsognathus Gen 2|NONE|T
+161|Deinocheirus|NONE|T
+162|Dodo|NONE|T
+163|Pterodactylus|NONE|T
+164|Gorgosaure|NONE|T
+165|Kentrosaure|NONE|T
+166|Little Eatie|NONE|T
+167|Aquilops|NONE|T
+168|Australotitan|NONE|T
+169|Dracovenator|NONE|T
+170|Cératosaure|NONE|T
+171|Yutyrannus|NONE|T
+172|Eucladocéros|NONE|T
+173|Yuxisaurus|NONE|T
+174|Kelenken|NONE|T
+175|Cervalces|NONE|T
+176|Diabloceratops|NONE|T
+177|Gigantophis|NONE|T
+178|Nodosaure|NONE|T
+179|Pederpes Lux|NONE|T
+180|Scélidosaure|NONE|T
+181|Solitaire De Rodrigues|NONE|T
+182|Smilodon|NONE|T
+183|Bumpy|NONE|T
+184|Einiosaure|NONE|T
+185|Pachyrhinosaure|NONE|T
+186|Mylodon|NONE|T
+187|Struthiomimus|NONE|T
+188|Big Eatie|NONE|T
+189|Borealopelta|NONE|T
+190|Masiakasaurus|NONE|T
+191|Iguanodon|NONE|T
+192|Irritator Gén 2|NONE|T
+193|Megatherium|NONE|T
+194|Sinosauropteryx|NONE|T
+195|Stegouros|NONE|T
+196|Styracosaurus Lux|NONE|T
+197|Red|NONE|T
+198|Ailurarctos|NONE|T
+199|Antarctopelta|NONE|T
+200|Arctodus|NONE|T
+201|Beta|NONE|T
+202|Dracorex|NONE|T
+203|Erlikosaure|NONE|T
+204|Eryops|NONE|T
+205|Giganotosaurus Gén 2|NONE|T
+206|Mégalosaure|NONE|T
+207|Rhinocéros Laineux|NONE|T
+208|Zalmoxes|NONE|T
+209|Dracorex Gén 2|NONE|T
+210|Lythronax|NONE|T
+211|Brunette|NONE|T
+212|Tsintaosaurus|NONE|T
+213|Charlie|NONE|T
+214|Albertosaurus|NONE|T
+215|Deinonychus|NONE|T
+216|Delta|NONE|T
+217|Gastornis|NONE|T
+218|Homalocéphale|NONE|T
+219|Deinosuchus|NONE|T
+220|Fukuisaurus|NONE|T
+221|Koreanosaurus|NONE|T
+222|Sinocératops|NONE|T
+223|Sphenacodon|NONE|T
+224|Blonde Becky|NONE|T
+225|Doe|NONE|T
+226|Buck|NONE|T
+227|Carbonemys|NONE|T
+228|Cryolophosaurus|NONE|T
+229|Sonorasaurus|NONE|T
+230|Tricératops Gén 2|NONE|T
+231|Toro|NONE|T
+232|The Big One|NONE|T
+233|Acanthostega|NONE|T
+234|Diplocaulus Gén 2|NONE|T
+235|Mastodonte|NONE|T
+236|Sécodontosaure|NONE|T
+237|Ghost|NONE|T
+238|Stégosaure Gén 2|NONE|T
+239|Echo|NONE|T
+240|Purussaurus|NONE|T
+241|Monkeydactyl|NONE|T
+242|Seymouria|NONE|T
+243|Spinosaurus Gén 2|NONE|T
+244|Bajadasaurus|NONE|T
+245|Edaphosaurus|NONE|T
+246|Proterogyrinus|NONE|T
+247|Rinchenia|NONE|T
+248|Bull|NONE|T
+249|The Spino|NONE|T
+250|Bageherpeton|NONE|T
+251|Thérizinosaure Gén 2|NONE|T
+252|Geosternbergia|NONE|T
+253|Gryposuchus|NONE|T
+254|Blue|NONE|T
+255|Carnotaurus Jouet|NONE|T
+256|One-Armed Baryonyx|NONE|T
+257|Panthera|NONE|T
+258|Baryonyx Leucistique|NONE|T
+259|Diploceraspis|NONE|T
+260|Panthera Blytheae|NONE|T
+261|Amargasaurus|NONE|T
+262|Cearadactylus|NONE|T
+263|Darwinopterus|NONE|T
+264|Dilophosaure Gén 2|NONE|T
+265|Dreadnoughtus|NONE|T
+266|Kaprosuchus Gén 2|NONE|T
+267|Metriacanthosaure|NONE|T
+268|Parasaurolophus Gén 2|NONE|T
+269|Segnosaure|NONE|T
+270|Troödon|NONE|T
+271|Rexy|NONE|T
+272|Dakotaraptor|NONE|T
+273|Nyctosaurus|NONE|T
+274|Mammouth|NONE|T
+275|Arambourgiania|NONE|T
+276|Urtinotherium|NONE|T
+277|Brachiosaure|NONE|T
+278|Edmontosaurus|NONE|T
+279|Thalassodromeus|NONE|T
+280|Titanoboa|NONE|T
+281|Tupandactylus|NONE|T
+282|Ornithocheirus|NONE|T
+283|Archelon|NONE|T
+284|Mosasaure|NONE|T
+285|Ptéranodon Gén 2|NONE|T
+286|Tupuxuara|NONE|T
+287|Mosasaure Gén 2|NONE|T
+288|Ophthalmosaure|NONE|T
+289|Gillicus|NONE|T
+290|Barracudasaurus|NONE|T
+291|Platecarpus|NONE|T
+292|Temnodontosaurus|NONE|T
+293|Umoonasaurus|NONE|T
+294|Goronyosaurus|NONE|T
+295|Plesiosuchus|NONE|T
+296|Bananogmius|NONE|T
+297|Edestus|NONE|T
+298|Suchodus|NONE|T
+299|Smoothie|NONE|T
+300|Pierce|NONE|T
+301|Major|NONE|T
+302|Tiger|NONE|T
+303|Rebel|NONE|T
+304|Angel|NONE|T
+305|Junior|NONE|T
+306|Spinosaurus Rebirth|NONE|T
+307|The Cerato Jp3|NONE|T
+308|One-Eyed Allosaurus|NONE|T
+309|Pyroraptor Dominion|NONE|T
+310|Mosasaurus Rebirth|NONE|T
+311|Gorgosuchus|HYBRID|T
+312|Erliphosaurus|HYBRID|T
+313|Allonogmius|HYBRID|T
+314|Smithetoceras|HYBRID|T
+315|Cerazinosaure|HYBRID|T
+316|Sah Panthera|HYBRID|T
+317|Mammotherium|HYBRID|T
+318|Segnosuchus|HYBRID|T
+319|Ptéraquetzal|HYBRID|T
+320|Zalmonodon|HYBRID|T
+321|Rhinoprotodon|HYBRID|T
+322|Gillirhynchops|HYBRID|T
+323|Glythronax|HYBRID|T
+324|Secodontognathus|HYBRID|T
+325|Metriaphodon|HYBRID|T
+326|Tyrannolophosaure|HYBRID|T
+327|Megarchelon|HYBRID|T
+328|Dunkleosaure|HYBRID|T
+329|Dreadactylus|HYBRID|T
+330|Pachygalosaure|HYBRID|T
+331|Kaprodacthylus|HYBRID|T
+332|Scorpios Rex Gén 2|HYBRID|T
+333|Fukuimimus|HYBRID|T
+334|Draco Lux|HYBRID|T
+335|Yudon|HYBRID|T
+336|Compsovenator|HYBRID|T
+337|Dracocératops|HYBRID|T
+338|Iguanosuchus|HYBRID|T
+339|Scorpios Rex|HYBRID|T
+340|Spinoceratops|HYBRID|T
+341|Bagehesaurus|HYBRID|T
+342|Chromaspinus|HYBRID|T
+343|Armormata|HYBRID|T
+344|Cryolobourgiania|HYBRID|T
+345|Poukadei|HYBRID|T
+346|Dilophoboa|HYBRID|T
+347|Ophthacerapsis|HYBRID|T
+348|Megalocevia|SUPER_HYBRID|T
+349|Quetzaljara|SUPER_HYBRID|T
+350|Spinotops|SUPER_HYBRID|T
+351|Hydraboa|SUPER_HYBRID|T

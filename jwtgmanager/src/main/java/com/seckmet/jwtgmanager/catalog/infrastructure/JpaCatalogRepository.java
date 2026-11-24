@@ -1,12 +1,14 @@
 package com.seckmet.jwtgmanager.catalog.infrastructure;
 
 import com.seckmet.jwtgmanager.catalog.domain.CatalogRepository;
+import com.seckmet.jwtgmanager.catalog.domain.CreatureSheet;
 import com.seckmet.jwtgmanager.catalog.domain.HybridKind;
 import com.seckmet.jwtgmanager.catalog.domain.HybridRecipe;
 import com.seckmet.jwtgmanager.catalog.domain.Rarity;
 import com.seckmet.jwtgmanager.catalog.domain.Species;
 import org.springframework.stereotype.Repository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -18,12 +20,24 @@ class JpaCatalogRepository implements CatalogRepository {
     private final RaritySpringRepository rarities;
     private final SpeciesSpringRepository species;
     private final HybridRecipeSpringRepository recipes;
+    private final CreatureSheetSpringRepository sheets;
 
     JpaCatalogRepository(RaritySpringRepository rarities, SpeciesSpringRepository species,
-                         HybridRecipeSpringRepository recipes) {
+                         HybridRecipeSpringRepository recipes, CreatureSheetSpringRepository sheets) {
         this.rarities = rarities;
         this.species = species;
         this.recipes = recipes;
+        this.sheets = sheets;
+    }
+
+    @Override
+    public Optional<CreatureSheet> sheetOf(int speciesId) {
+        return sheets.findById(speciesId).map(e -> new CreatureSheet(e.getSpeciesId(), e.getSourceKey(),
+                e.getRegion(), e.getCreatureClass(), e.getReleaseDate(),
+                Arrays.asList(e.getHealthLvl10(), e.getHealthLvl20(), e.getHealthLvl30(), e.getHealthLvl40()),
+                Arrays.asList(e.getAttackLvl10(), e.getAttackLvl20(), e.getAttackLvl30(), e.getAttackLvl40()),
+                e.getFerocity(), e.getCoins(), e.getCoinMinutes(), e.getCoinsPerMinute(), e.getHatchMinutes(),
+                e.getDnaBuy(), e.getDnaSell()));
     }
 
     @Override

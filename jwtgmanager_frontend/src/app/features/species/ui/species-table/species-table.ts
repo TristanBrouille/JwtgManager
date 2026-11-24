@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   HYBRID_KIND_LABEL,
   LockState,
@@ -23,7 +24,7 @@ type CountField = 'lvl10' | 'lvl20' | 'lvl30' | 'lvl40';
 /** Tableau éditable des espèces : paliers, objectif et déblocage. */
 @Component({
   selector: 'app-species-table',
-  imports: [CurrencyTag, ProgressBar, RarityChip, PercentPipe, ShortNumberPipe],
+  imports: [RouterLink, CurrencyTag, ProgressBar, RarityChip, PercentPipe, ShortNumberPipe],
   templateUrl: './species-table.html',
   styleUrl: './species-table.scss',
 })

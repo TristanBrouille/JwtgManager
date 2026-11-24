@@ -1,0 +1,59 @@
+@let s = species();
+<app-progress-bar [value]="s.progress" [label]="'Progression ' + s.name" />
+<p class="note">
+  {{ s.targetLvl40 ? (s.progress | pct) : 'non suivie' }} · objectif {{ s.targetLvl40 }} niveau(x)
+  40 ·
+  @if (s.done) {
+    <span class="up">terminée</span>
+  } @else if (s.unitCost === null) {
+    coût non renseigné
+  } @else {
+    reste {{ s.remaining | short }} <app-currency-tag [currency]="s.currency" />
+  }
+</p>
+<div class="levels" [attr.aria-busy]="busy()">
+  @for (l of levels; track l.field) {
+    <div class="lvl">
+      <span class="lbl">{{ l.label }}</span>
+      <button
+        type="button"
+        class="ghost step"
+        [disabled]="s[l.field] === 0 || busy()"
+        [attr.aria-label]="'Retirer un ' + s.name + ' ' + l.label"
+        (click)="change(l.field, -1)"
+      >
+        −
+      </button>
+      <b class="count" aria-live="polite">{{ s[l.field] }}</b>
+      <button
+        type="button"
+        class="step"
+        [disabled]="busy()"
+        [attr.aria-label]="'Ajouter un ' + s.name + ' ' + l.label"
+        (click)="change(l.field, 1)"
+      >
+        +
+      </button>
+    </div>
+  }
+</div>
+<dl class="facts">
+  <div>
+    <dt>Coût / palier</dt>
+    <dd>
+      @if (s.unitCost !== null) {
+        {{ s.unitCost | short }} <app-currency-tag [currency]="s.currency" />
+      } @else {
+        <span class="rx">à renseigner</span>
+      }
+    </dd>
+  </div>
+  <div>
+    <dt>Investi</dt>
+    <dd>{{ s.invested | short }}</dd>
+  </div>
+  <div>
+    <dt>Unités restantes</dt>
+    <dd>{{ s.unitsRemaining }}</dd>
+  </div>
+</dl>

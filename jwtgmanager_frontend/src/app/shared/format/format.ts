@@ -23,3 +23,15 @@ export function fullNumber(value: number): string {
 export function percent(ratio: number, digits = 0): string {
   return `${(ratio * 100).toFixed(digits).replace('.', ',')} %`;
 }
+
+/** Durée en minutes : 52 → « 52 min », 360 → « 6 h », 10080 → « 7 j », 1530 → « 1 j 1 h ». */
+export function duration(minutes: number | null | undefined): string {
+  if (minutes === null || minutes === undefined) {
+    return '—';
+  }
+  const days = Math.floor(minutes / 1440);
+  const hours = Math.floor((minutes % 1440) / 60);
+  const mins = minutes % 60;
+  const parts = [days && `${days} j`, hours && `${hours} h`, mins && `${mins} min`].filter(Boolean);
+  return parts.length ? parts.slice(0, 2).join(' ') : '0 min';
+}

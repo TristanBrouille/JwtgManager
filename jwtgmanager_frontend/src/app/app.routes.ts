@@ -34,6 +34,14 @@ export const routes: Routes = [
           import('./features/species/species-page/species-page').then((m) => m.SpeciesPage),
       },
       {
+        path: 'especes/:id',
+        title: 'Fiche espèce · JWTG Manager',
+        loadComponent: () =>
+          import('./features/species/species-detail-page/species-detail-page').then(
+            (m) => m.SpeciesDetailPage,
+          ),
+      },
+      {
         path: 'objectifs',
         title: 'Objectifs · JWTG Manager',
         loadComponent: () =>

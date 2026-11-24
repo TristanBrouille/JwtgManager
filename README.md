@@ -12,10 +12,11 @@ JWTG Manager remplace le gros tableur Excel de suivi par une application web. Ch
 |---|---|
 | **Tableau de bord** | KPI de complétion globale, ADN / super ADN / ambre restants, espèces terminées, courbe d'évolution, complétion par rareté, espèces les plus proches de l'objectif (dépenses en ADN), projection selon le budget hebdo, accès rapide aux favoris |
 | **Espèces** | Tableau des 351 espèces avec filtres (rareté, type normal / hybride / super hybride, déblocage, statut), tri par défaut sur le coût unitaire et couleurs : 🟧 bloquée débloquable à l'ambre, 🟥 bloquée sans ambre |
+| **Fiche espèce** | Clic sur le nom dans le tableau : image, région, classe, santé et attaque par palier, pièces, éclosion, prix, recette et hybrides qui l'utilisent, plus la progression du joueur avec +/- et favori |
 | **Objectifs** | Nombre de niveaux 40 visé par espèce, réglable en masse ou espèce par espèce |
 | **Investissements** | Espèces favorites avec +/- rapide par niveau, budget hebdo par monnaie, journal des dépenses |
 | **Fusion** | Liste des espèces fusionnables : 2 spécimens d'un niveau donnent 1 spécimen du niveau suivant (impossible au niveau 40) |
-| **Hybrides** | Recettes des hybrides et super hybrides, avec l'état de leurs ingrédients |
+| **Hybrides** | Hybrides et super hybrides avec les espèces qui les composent, leur progression et le suivi du déblocage |
 | **Comptes** | Inscription et connexion par JWT, chaque joueur a sa propre collection |
 
 ## 📐 Règles métier
@@ -120,6 +121,7 @@ Le serveur de dev redirige `/api` vers `http://localhost:8080` (`proxy.conf.json
 | `POST` | `/api/auth/register` · `/api/auth/login` | Inscription / connexion, renvoie un JWT |
 | `GET` | `/api/auth/me` | Utilisateur courant |
 | `GET` | `/api/catalog/rarities` · `/api/catalog/hybrids` | Référentiel |
+| `GET` | `/api/catalog/species/{id}` | Fiche d'une espèce (stats de jeu, recette, images) |
 | `GET` | `/api/collection` | Collection du joueur avec avancement, reste et coûts |
 | `PUT` | `/api/collection/{id}` | Mise à jour des spécimens ou de l'objectif d'une espèce |
 | `PUT` | `/api/collection/{id}/favorite` | Ajout ou retrait des favoris |
@@ -151,5 +153,7 @@ JwtgManager/
 Les fichiers `CLAUDE.md` et les skills `.claude/skills/` décrivent les conventions d'architecture et de code de chaque partie.
 
 ---
+
+*Statistiques et images des créatures : [paleo.gg](https://www.paleo.gg/fr/games/jurassic-world-the-game), images chargées depuis leur CDN.*
 
 *Projet de fan non officiel, sans lien avec Ludia ni Universal. Jurassic World est une marque d'Universal Studios et d'Amblin Entertainment.*

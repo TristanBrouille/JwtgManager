@@ -31,6 +31,30 @@ CREATE TABLE hybrid_recipe (
     CHECK (hybrid_id <> component_id)
 );
 
+-- Fiche de jeu d'une espèce, importée de paleo.gg (stats par palier, pièces, éclosion).
+CREATE TABLE creature_sheet (
+    species_id       INTEGER PRIMARY KEY REFERENCES species(id) ON DELETE CASCADE,
+    source_key       TEXT    NOT NULL UNIQUE,  -- identifiant paleo.gg (images, page source)
+    region           TEXT,
+    creature_class   TEXT,
+    release_date     DATE,
+    health_lvl10     INTEGER NOT NULL,
+    health_lvl20     INTEGER NOT NULL,
+    health_lvl30     INTEGER NOT NULL,
+    health_lvl40     INTEGER NOT NULL,
+    attack_lvl10     INTEGER NOT NULL,
+    attack_lvl20     INTEGER NOT NULL,
+    attack_lvl30     INTEGER NOT NULL,
+    attack_lvl40     INTEGER NOT NULL,
+    ferocity         INTEGER,
+    coins            BIGINT,               -- pièces produites par cycle
+    coin_minutes     INTEGER,              -- durée d'un cycle de pièces
+    coins_per_minute INTEGER,
+    hatch_minutes    INTEGER,              -- temps d'éclosion
+    dna_buy          BIGINT,               -- prix d'achat de l'œuf en ADN
+    dna_sell         BIGINT                -- prix de revente en ADN
+);
+
 -- ========== Joueurs ==========
 
 CREATE TABLE app_user (

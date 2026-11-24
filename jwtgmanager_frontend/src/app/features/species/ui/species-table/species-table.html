@@ -21,7 +21,7 @@
           [class.row-locked]="row.lock === 'LOCKED'"
         >
           <td class="nm">
-            {{ row.name }}
+            <a [routerLink]="['/especes', row.speciesId]">{{ row.name }}</a>
             <small
               ><app-rarity-chip [code]="row.rarityCode" />
               @if (row.hybridKind !== 'NONE') {

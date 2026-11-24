@@ -1,0 +1,37 @@
+<div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Palier</th>
+        <th scope="col" class="num">Santé</th>
+        <th scope="col" class="num">Attaque</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (l of levels(); track l.level) {
+        <tr>
+          <th scope="row">
+            <span class="lvl">
+              <img
+                [src]="l.portraitUrl"
+                [alt]="name() + ' au niveau ' + l.level"
+                width="44"
+                height="44"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              Niveau {{ l.level }}
+            </span>
+          </th>
+          <td class="num">{{ l.health }}</td>
+          <td class="num">{{ l.attack }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+@if (ferocity() !== null) {
+  <p class="note">
+    Fureur au niveau 40 : <b>{{ ferocity() }}</b>
+  </p>
+}
