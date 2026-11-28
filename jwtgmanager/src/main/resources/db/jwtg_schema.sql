@@ -4,13 +4,14 @@
 -- ========== Catalogue du jeu (commun à tous les joueurs) ==========
 
 CREATE TABLE rarity (
-    code        CHAR(1) PRIMARY KEY,          -- C, R, E, L, T
+    code        CHAR(1) PRIMARY KEY,          -- C, R, E, L, T, S, U, J, V
     label       TEXT    NOT NULL,             -- Commun, Rare, Extra rare, Légendaire, Tournoi
     sort_order  SMALLINT NOT NULL
 );
 
 INSERT INTO rarity VALUES
-  ('C','Commun',1),('R','Rare',2),('E','Extra rare',3),('L','Légendaire',4),('T','Tournoi',5);
+  ('C','Commun',1),('R','Rare',2),('E','Extra rare',3),('L','Légendaire',4),('T','Tournoi',5),
+  ('S','Vedette',6),('U','Superstar',7),('J','Jouet',8),('V','VIP',9);
 
 CREATE TABLE species (
     id           SERIAL PRIMARY KEY,
@@ -37,6 +38,8 @@ CREATE TABLE creature_sheet (
     source_key       TEXT    NOT NULL UNIQUE,  -- identifiant paleo.gg (images, page source)
     region           TEXT,
     creature_class   TEXT,
+    region_code      TEXT,                 -- jurassic, aquatic, cenozoic
+    class_code       TEXT,                 -- herbivore, amphibian, carnivore, pterosaur, surface, cave, reef, snow, cavern, savannah…
     release_date     DATE,
     health_lvl10     INTEGER NOT NULL,
     health_lvl20     INTEGER NOT NULL,
@@ -151,3 +154,49 @@ CROSS JOIN LATERAL (
                 ELSE s.dna_cost END AS unit_cost,
            ps.count_lvl10 + 2 * ps.count_lvl20 + 4 * ps.count_lvl30 + 8 * ps.count_lvl40 AS units
 ) c;
+
+-- ========== Tournois ==========
+
+-- Trios de tournoi calculés pour un joueur (recalculés à la demande).
+CREATE TABLE tournament_plan (
+    user_id         UUID PRIMARY KEY REFERENCES app_user(id) ON DELETE CASCADE,
+    computed_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
+    collection_hash TEXT NOT NULL            -- empreinte de la collection au moment du calcul
+);
+
+CREATE TABLE tournament_team (
+    id              BIGSERIAL PRIMARY KEY,
+    user_id         UUID NOT NULL REFERENCES tournament_plan(user_id) ON DELETE CASCADE,
+    tournament      TEXT NOT NULL CHECK (tournament IN ('JURASSIC','AQUATIC','CENOZOIC')),
+    league          TEXT NOT NULL CHECK (league IN ('NEWBORN','HUNTER','PREDATOR','DOMINANT')),
+    rank            SMALLINT NOT NULL CHECK (rank > 0),
+    pair_class      TEXT NOT NULL,           -- classe des 2 dinos
+    single_class    TEXT NOT NULL,           -- classe du 3e dino
+    total_ferocity  INTEGER NOT NULL,
+    UNIQUE (user_id, tournament, league, rank)
+);
+
+CREATE TABLE tournament_team_member (
+    team_id     BIGINT  NOT NULL REFERENCES tournament_team(id) ON DELETE CASCADE,
+    slot        SMALLINT NOT NULL CHECK (slot BETWEEN 1 AND 3),   -- 1 et 2 : la paire, 3 : le dino seul
+    species_id  INTEGER NOT NULL REFERENCES species(id) ON DELETE CASCADE,
+    level       SMALLINT NOT NULL CHECK (level IN (10,20,30,40)),
+    health      INTEGER NOT NULL,
+    attack      INTEGER NOT NULL,
+    ferocity    INTEGER NOT NULL,
+    profile     TEXT NOT NULL CHECK (profile IN ('TANK','BALANCED','STRIKER')),
+    PRIMARY KEY (team_id, slot)
+);
+
+-- Spécimens restés sans trio lors du dernier calcul.
+CREATE TABLE tournament_leftover (
+    user_id     UUID     NOT NULL REFERENCES tournament_plan(user_id) ON DELETE CASCADE,
+    tournament  TEXT     NOT NULL CHECK (tournament IN ('JURASSIC','AQUATIC','CENOZOIC')),
+    species_id  INTEGER  NOT NULL REFERENCES species(id) ON DELETE CASCADE,
+    level       SMALLINT NOT NULL CHECK (level IN (10,20,30,40)),
+    class_code  TEXT     NOT NULL,
+    health      INTEGER  NOT NULL,
+    attack      INTEGER  NOT NULL,
+    quantity    SMALLINT NOT NULL CHECK (quantity > 0),
+    PRIMARY KEY (user_id, tournament, species_id, level)
+);

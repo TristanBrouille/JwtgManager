@@ -9,7 +9,7 @@ import java.util.Objects;
  * {@code health} et {@code attack} donnent une valeur par palier : niveaux 10, 20, 30 et 40.
  */
 public record CreatureSheet(int speciesId, String sourceKey, String region, String creatureClass,
-                            LocalDate releaseDate, List<Integer> health, List<Integer> attack,
+                            String regionCode, String classCode, LocalDate releaseDate, List<Integer> health, List<Integer> attack,
                             Integer ferocity, Long coins, Integer coinMinutes, Integer coinsPerMinute,
                             Integer hatchMinutes, Long dnaBuy, Long dnaSell) {
 

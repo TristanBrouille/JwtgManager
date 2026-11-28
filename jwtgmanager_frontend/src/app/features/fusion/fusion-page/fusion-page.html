@@ -4,12 +4,13 @@
     <p>
       Deux spécimens d'un même palier donnent un spécimen du palier suivant : 2 niveaux 10 → 1
       niveau 20, 2 niveaux 20 → 1 niveau 30, 2 niveaux 30 → 1 niveau 40. Les niveaux 40 ne se
-      fusionnent pas. L'ADN investi ne change pas, seul l'avancement progresse.
+      fusionnent pas, et les VIP ne sont pas proposés. L'ADN investi ne change pas, seul
+      l'avancement progresse.
     </p>
   </div>
   <select aria-label="Filtrer par rareté" (change)="onRarity($event)">
     <option value="">Toutes raretés</option>
-    @for (r of catalog.rarities.value(); track r.code) {
+    @for (r of rarities(); track r.code) {
       <option [value]="r.code">{{ r.label }}</option>
     }
   </select>

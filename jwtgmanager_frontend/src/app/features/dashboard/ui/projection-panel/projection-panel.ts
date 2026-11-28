@@ -15,10 +15,14 @@ export class ProjectionPanel {
   readonly dna = input.required<Projection>();
   readonly superDna = input.required<Projection>();
   readonly amber = input.required<Projection>();
+  /** Masque les monnaies sans reste à payer. */
+  readonly hideDone = input(false);
 
-  protected readonly rows = computed<{ currency: Currency; projection: Projection }[]>(() => [
-    { currency: 'DNA', projection: this.dna() },
-    { currency: 'SUPER_DNA', projection: this.superDna() },
-    { currency: 'AMBER', projection: this.amber() },
-  ]);
+  protected readonly rows = computed<{ currency: Currency; projection: Projection }[]>(() =>
+    [
+      { currency: 'DNA' as const, projection: this.dna() },
+      { currency: 'SUPER_DNA' as const, projection: this.superDna() },
+      { currency: 'AMBER' as const, projection: this.amber() },
+    ].filter((row) => !this.hideDone() || row.projection.remaining > 0),
+  );
 }

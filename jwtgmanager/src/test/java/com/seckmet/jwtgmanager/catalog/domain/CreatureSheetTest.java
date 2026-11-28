@@ -24,7 +24,8 @@ class CreatureSheetTest {
     }
 
     private static CreatureSheet sheet(List<Integer> health, List<Integer> attack) {
-        return new CreatureSheet(1, "acrocanthosaurus", "Jurassique", "Carnivore", LocalDate.of(2017, 11, 3),
+        return new CreatureSheet(1, "acrocanthosaurus", "Jurassique", "Carnivore", "jurassic", "carnivore",
+                LocalDate.of(2017, 11, 3),
                 health, attack, 2993, 230_400L, 180, 1280, 360, 10_000L, 5_000L);
     }
 }

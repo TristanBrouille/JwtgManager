@@ -7,7 +7,9 @@ export const CURRENCY_LABEL: Record<Currency, string> = {
   AMBER: 'Ambre',
 };
 export type CurrencyFilter = Currency | 'ALL';
-export type RarityCode = 'C' | 'R' | 'E' | 'L' | 'T';
+/** Raretés du jeu (paleo.gg) : commun, rare, extra rare, légendaire, tournoi, vedette, superstar, jouet, VIP. */
+export type RarityCode = 'C' | 'R' | 'E' | 'L' | 'T' | 'S' | 'U' | 'J' | 'V';
+export const RARITY_CODES: readonly RarityCode[] = ['C', 'R', 'E', 'L', 'T', 'S', 'U', 'J', 'V'];
 /** Super hybride = hybride dont au moins un composant est lui-même un hybride. */
 export type HybridKind = 'NONE' | 'HYBRID' | 'SUPER_HYBRID';
 
@@ -151,6 +153,16 @@ export interface Dashboard {
   dna: Projection;
   superDna: Projection;
   amber: Projection;
+  /** Budget restant pour terminer les espèces favorites suivies. */
+  favorites: {
+    species: number;
+    done: number;
+    /** Favorites non terminées sans coût renseigné (non chiffrées). */
+    unknownCost: number;
+    dna: Projection;
+    superDna: Projection;
+    amber: Projection;
+  };
 }
 
 export interface HistoryPoint {
@@ -171,6 +183,14 @@ export function lockState(s: SpeciesProgress): LockState {
     return 'UNLOCKED';
   }
   return s.currency === 'AMBER' ? 'LOCKED_AMBER' : 'LOCKED';
+}
+
+/**
+ * Espèce proposée à la fusion : au moins 2 spécimens au niveau 10, 20 ou 30.
+ * Les VIP ne sont pas proposées à la fusion.
+ */
+export function canFuse(s: SpeciesProgress): boolean {
+  return s.rarityCode !== 'V' && (s.lvl10 >= 2 || s.lvl20 >= 2 || s.lvl30 >= 2);
 }
 
 /** Multiplicateur de coût de chaque palier (niv. 10, 20, 30, 40). */
@@ -214,4 +234,78 @@ export interface SpeciesDetail {
   usedInIds: number[];
   /** Null si aucune fiche de jeu n'a été importée pour cette espèce. */
   sheet: CreatureSheet | null;
+}
+
+/** Profil de combat d'après le rapport attaque / santé. */
+export type CombatProfile = 'TANK' | 'BALANCED' | 'STRIKER';
+export type TournamentCode = 'JURASSIC' | 'AQUATIC' | 'CENOZOIC';
+export type LeagueCode = 'NEWBORN' | 'HUNTER' | 'PREDATOR' | 'DOMINANT';
+
+export interface TeamMember {
+  speciesId: number;
+  name: string;
+  level: number;
+  creatureClass: string;
+  health: number;
+  attack: number;
+  ferocity: number;
+  profile: CombatProfile;
+  profileLabel: string;
+  portraitUrl: string | null;
+}
+
+/** Idéal (paire complémentaire) ou paire non complémentaire ; les fureurs sont toujours à 10 % près. */
+export type TeamQuality = 'IDEAL' | 'UNMATCHED_PAIR';
+
+/** Trio : members[0] et members[1] forment la paire, members[2] est le dino seul. */
+export interface TournamentTeam {
+  rank: number;
+  totalFerocity: number;
+  ferocityGap: number;
+  pairClass: string;
+  singleClass: string;
+  quality: TeamQuality;
+  qualityLabel: string;
+  members: TeamMember[];
+}
+
+/** Spécimens identiques restés sans trio. */
+export interface TournamentLeftover {
+  specimen: TeamMember;
+  count: number;
+}
+
+export interface TournamentResult {
+  code: TournamentCode;
+  label: string;
+  /** Dinos du joueur jouables dans ce tournoi. */
+  specimens: number;
+  /** Dinos répartis en trios. */
+  placed: number;
+  teamCount: number;
+  idealTeams: number;
+  leagues: TournamentLeague[];
+  leftovers: TournamentLeftover[];
+}
+
+export interface TournamentLeague {
+  code: LeagueCode;
+  label: string;
+  /** Fureur totale minimale, exclue (sauf 0). */
+  above: number;
+  /** Fureur totale maximale, incluse ; null pour la ligue dominant. */
+  upTo: number | null;
+  /** Fureur minimale de chaque dino de la ligue. */
+  minUnit: number;
+  /** Fureur maximale de chaque dino ; null si aucune. */
+  maxUnit: number | null;
+  teams: TournamentTeam[];
+}
+
+export interface TournamentPlan {
+  /** Null tant qu'aucun calcul n'a été lancé. */
+  computedAt: string | null;
+  /** La collection a changé depuis le dernier calcul. */
+  outdated: boolean;
+  tournaments: TournamentResult[];
 }

@@ -18,6 +18,10 @@ public class CreatureSheetJpaEntity {
     private String region;
     @Column(name = "creature_class")
     private String creatureClass;
+    @Column(name = "region_code")
+    private String regionCode;
+    @Column(name = "class_code")
+    private String classCode;
     @Column(name = "release_date")
     private LocalDate releaseDate;
     @Column(name = "health_lvl10") private Integer healthLvl10;
@@ -43,6 +47,8 @@ public class CreatureSheetJpaEntity {
     public String getSourceKey() { return sourceKey; }
     public String getRegion() { return region; }
     public String getCreatureClass() { return creatureClass; }
+    public String getRegionCode() { return regionCode; }
+    public String getClassCode() { return classCode; }
     public LocalDate getReleaseDate() { return releaseDate; }
     public Integer getHealthLvl10() { return healthLvl10; }
     public Integer getHealthLvl20() { return healthLvl20; }

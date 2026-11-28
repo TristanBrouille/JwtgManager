@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { CatalogService } from '../../data/catalog.service';
 import { CollectionService } from '../../data/collection.service';
+import { canFuse } from '../../data/models';
 
 @Component({
   selector: 'app-shell',
@@ -16,11 +17,9 @@ export class Shell {
   protected readonly auth = inject(AuthService);
 
   protected readonly speciesCount = computed(() => this.collection.collection.value().length);
-  /** Espèces ayant au moins une fusion possible (2 spécimens ou plus au niveau 10, 20 ou 30). */
+  /** Espèces ayant au moins une fusion possible (hors VIP). */
   protected readonly fusionCount = computed(
-    () =>
-      this.collection.collection.value().filter((s) => s.lvl10 >= 2 || s.lvl20 >= 2 || s.lvl30 >= 2)
-        .length,
+    () => this.collection.collection.value().filter(canFuse).length,
   );
   protected readonly hybridsLabel = computed(() => {
     const unlocked = new Set(
@@ -39,6 +38,7 @@ export class Shell {
     { path: '/objectifs', label: 'Objectifs' },
     { path: '/investissements', label: 'Investissements' },
     { path: '/fusion', label: 'Fusion' },
+    { path: '/tournois', label: 'Tournois' },
     { path: '/hybrides', label: 'Hybrides' },
   ];
 }

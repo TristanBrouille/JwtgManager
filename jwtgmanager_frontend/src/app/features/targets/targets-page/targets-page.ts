@@ -2,7 +2,7 @@ import { Component, computed, effect, inject, signal, untracked } from '@angular
 import { FormField, form, max, min, required } from '@angular/forms/signals';
 import { CatalogService } from '../../../core/data/catalog.service';
 import { CollectionService } from '../../../core/data/collection.service';
-import { RarityCode, SpeciesProgress } from '../../../core/data/models';
+import { RARITY_CODES, RarityCode, SpeciesProgress } from '../../../core/data/models';
 import { problemMessage } from '../../../core/http/problem';
 import { ProgressBar } from '../../../shared/ui/progress-bar/progress-bar';
 import { PercentPipe, ShortNumberPipe } from '../../../shared/format/format.pipes';
@@ -38,9 +38,11 @@ export class TargetsPage {
   protected readonly error = signal<string | null>(null);
   protected readonly busy = signal(false);
 
-  protected readonly model = signal<Targets>({ C: 3, R: 3, E: 3, L: 3, T: 3 });
+  protected readonly model = signal<Targets>(
+    Object.fromEntries(RARITY_CODES.map((code) => [code, 3])) as Targets,
+  );
   protected readonly targetsForm = form(this.model, (p) => {
-    for (const code of ['C', 'R', 'E', 'L', 'T'] as const) {
+    for (const code of RARITY_CODES) {
       required(p[code], { message: 'Obligatoire' });
       min(p[code], 0, { message: '0 minimum' });
       max(p[code], 99, { message: '99 maximum' });
@@ -87,7 +89,7 @@ export class TargetsPage {
     try {
       const updated = await this.collection.setTargets(code, target);
       if (!code) {
-        this.model.set({ C: target, R: target, E: target, L: target, T: target });
+        this.model.set(Object.fromEntries(RARITY_CODES.map((code) => [code, target])) as Targets);
       }
       this.message.set(
         `${label} : objectif fixé à ${target} niveau${target > 1 ? 'x' : ''} 40 (${updated} espèces)`,

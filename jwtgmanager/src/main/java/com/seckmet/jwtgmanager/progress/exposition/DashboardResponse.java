@@ -17,7 +17,8 @@ public record DashboardResponse(
         List<Closest> closest,
         Projection dna,
         Projection superDna,
-        Projection amber) {
+        Projection amber,
+        Favorites favorites) {
 
     public record Summary(double completion, int done, int tracked, long lvl40, long lvl40Target,
                           long dnaInvested, long dnaRemaining, long superDnaInvested, long superDnaRemaining,
@@ -35,6 +36,10 @@ public record DashboardResponse(
     public record Projection(long remaining, long weeklyIncome, Long weeks, LocalDate finishDate) {
     }
 
+    public record Favorites(int species, int done, int unknownCost, Projection dna, Projection superDna,
+                            Projection amber) {
+    }
+
     static DashboardResponse from(DashboardView v) {
         var s = v.summary();
         return new DashboardResponse(v.currencyFilter(),
@@ -47,7 +52,10 @@ public record DashboardResponse(
                         r.dnaRemaining(), r.superDnaRemaining(), r.amberRemaining())).toList(),
                 v.closest().stream().map(c -> new Closest(c.speciesId(), c.name(), c.rarityCode(), c.progress(),
                         c.remaining(), c.currency())).toList(),
-                projection(v.dna()), projection(v.superDna()), projection(v.amber()));
+                projection(v.dna()), projection(v.superDna()), projection(v.amber()),
+                new Favorites(v.favorites().species(), v.favorites().done(), v.favorites().unknownCost(),
+                        projection(v.favorites().dna()), projection(v.favorites().superDna()),
+                        projection(v.favorites().amber())));
     }
 
     private static Projection projection(DashboardView.Projection p) {

@@ -15,7 +15,8 @@ public record DashboardView(
         List<ClosestSpecies> closest,
         Projection dna,
         Projection superDna,
-        Projection amber) {
+        Projection amber,
+        FavoritesProjection favorites) {
 
     public record Summary(double completion, int done, int tracked, long lvl40, long lvl40Target,
                           long dnaInvested, long dnaRemaining, long superDnaInvested, long superDnaRemaining,
@@ -31,5 +32,13 @@ public record DashboardView(
     }
 
     public record Projection(long remaining, long weeklyIncome, Long weeks, LocalDate finishDate) {
+    }
+
+    /**
+     * Budget restant pour terminer les espèces favorites suivies : {@code species} favorites comptées,
+     * dont {@code unknownCost} sans coût renseigné (non chiffrées), {@code done} déjà terminées.
+     */
+    public record FavoritesProjection(int species, int done, int unknownCost, Projection dna, Projection superDna,
+                                      Projection amber) {
     }
 }

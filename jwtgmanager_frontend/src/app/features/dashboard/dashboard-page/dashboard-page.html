@@ -80,6 +80,37 @@
       <h2>Projection budget</h2>
       <p class="note">Selon vos revenus hebdomadaires (onglet Investissements).</p>
       <app-projection-panel [dna]="d.dna" [superDna]="d.superDna" [amber]="d.amber" />
+
+      @let fav = d.favorites;
+      <div class="fav-projection">
+        <h3>Espèces favorites</h3>
+        @if (fav.species === 0) {
+          <p class="note">
+            Aucune espèce favorite suivie.
+            <a routerLink="/investissements">Ajoutez des favoris</a> pour voir leur budget.
+          </p>
+        } @else {
+          <p class="note">
+            {{ fav.species }} favorite{{ fav.species > 1 ? 's' : '' }} suivie{{
+              fav.species > 1 ? 's' : ''
+            }}
+            @if (fav.done) {
+              · {{ fav.done }} terminée{{ fav.done > 1 ? 's' : '' }}
+            }
+            @if (fav.unknownCost) {
+              · {{ fav.unknownCost }} sans coût renseigné (non chiffrée{{
+                fav.unknownCost > 1 ? 's' : ''
+              }})
+            }
+          </p>
+          <app-projection-panel
+            [dna]="fav.dna"
+            [superDna]="fav.superDna"
+            [amber]="fav.amber"
+            [hideDone]="true"
+          />
+        }
+      </div>
     </section>
   </div>
 } @else if (api.dashboard.isLoading()) {

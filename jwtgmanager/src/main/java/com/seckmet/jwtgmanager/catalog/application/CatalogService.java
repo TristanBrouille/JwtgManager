@@ -59,6 +59,19 @@ public class CatalogService {
                 .toList();
     }
 
+    /** Statistiques de combat de toutes les espèces qui ont une fiche de jeu, par identifiant d'espèce. */
+    public Map<Integer, CombatSheetView> combatSheets() {
+        return catalog.sheets().stream()
+                .map(c -> new CombatSheetView(c.speciesId(), c.sourceKey(), c.regionCode(), c.classCode(),
+                        c.health(), c.attack()))
+                .collect(Collectors.toMap(CombatSheetView::speciesId, Function.identity()));
+    }
+
+    /** Portrait d'une espèce au palier donné (10, 20, 30 ou 40). */
+    public String portraitUrl(String sourceKey, int level) {
+        return media.portraitUrl(sourceKey, level / 10);
+    }
+
     /** Fiche d'une espèce avec sa recette, les hybrides qui l'utilisent et ses statistiques de jeu. */
     public SpeciesDetailView detail(int id) {
         SpeciesView species = species(id);

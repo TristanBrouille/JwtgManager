@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CatalogService } from '../../../core/data/catalog.service';
 import { CollectionService } from '../../../core/data/collection.service';
-import { RarityCode } from '../../../core/data/models';
+import { RarityCode, canFuse } from '../../../core/data/models';
 import { problemMessage } from '../../../core/http/problem';
 import { FusableLevel, FusionCard } from '../ui/fusion-card/fusion-card';
 
@@ -20,15 +20,20 @@ export class FusionPage {
   protected readonly message = signal<string | null>(null);
   protected readonly error = signal<string | null>(null);
 
-  /** Espèces avec au moins 2 spécimens au niveau 10, 20 ou 30. */
+  /** Espèces fusionnables (hors VIP), filtrées par rareté. */
   protected readonly candidates = computed(() => {
     const rarity = this.rarity();
     return this.collection.collection
       .value()
-      .filter((s) => s.lvl10 >= 2 || s.lvl20 >= 2 || s.lvl30 >= 2)
+      .filter(canFuse)
       .filter((s) => !rarity || s.rarityCode === rarity)
       .sort((a, b) => a.name.localeCompare(b.name, 'fr'));
   });
+
+  /** Raretés du filtre, sans VIP. */
+  protected readonly rarities = computed(() =>
+    this.catalog.rarities.value().filter((r) => r.code !== 'V'),
+  );
 
   protected readonly loading = this.collection.collection.isLoading;
 

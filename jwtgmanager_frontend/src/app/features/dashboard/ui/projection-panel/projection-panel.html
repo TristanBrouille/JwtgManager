@@ -12,4 +12,6 @@
     </span>
     <b class="num">{{ row.projection.remaining | short }}</b>
   </div>
+} @empty {
+  <p class="note">Plus rien à payer.</p>
 }

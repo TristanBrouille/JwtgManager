@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { Toolbar, ToolbarWidget } from '@angular/aria/toolbar';
+import { RouterLink } from '@angular/router';
 import { CollectionService } from '../../../core/data/collection.service';
 import { CurrencyFilter } from '../../../core/data/models';
 import { problemMessage } from '../../../core/http/problem';
@@ -15,6 +16,7 @@ import { RarityBars } from '../ui/rarity-bars/rarity-bars';
 @Component({
   selector: 'app-dashboard-page',
   imports: [
+    RouterLink,
     Toolbar,
     ToolbarWidget,
     KpiCard,

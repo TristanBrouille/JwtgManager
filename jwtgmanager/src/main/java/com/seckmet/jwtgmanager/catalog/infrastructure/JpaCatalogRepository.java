@@ -32,12 +32,21 @@ class JpaCatalogRepository implements CatalogRepository {
 
     @Override
     public Optional<CreatureSheet> sheetOf(int speciesId) {
-        return sheets.findById(speciesId).map(e -> new CreatureSheet(e.getSpeciesId(), e.getSourceKey(),
-                e.getRegion(), e.getCreatureClass(), e.getReleaseDate(),
+        return sheets.findById(speciesId).map(JpaCatalogRepository::toDomain);
+    }
+
+    @Override
+    public List<CreatureSheet> sheets() {
+        return sheets.findAll().stream().map(JpaCatalogRepository::toDomain).toList();
+    }
+
+    private static CreatureSheet toDomain(CreatureSheetJpaEntity e) {
+        return new CreatureSheet(e.getSpeciesId(), e.getSourceKey(), e.getRegion(), e.getCreatureClass(),
+                e.getRegionCode(), e.getClassCode(), e.getReleaseDate(),
                 Arrays.asList(e.getHealthLvl10(), e.getHealthLvl20(), e.getHealthLvl30(), e.getHealthLvl40()),
                 Arrays.asList(e.getAttackLvl10(), e.getAttackLvl20(), e.getAttackLvl30(), e.getAttackLvl40()),
                 e.getFerocity(), e.getCoins(), e.getCoinMinutes(), e.getCoinsPerMinute(), e.getHatchMinutes(),
-                e.getDnaBuy(), e.getDnaSell()));
+                e.getDnaBuy(), e.getDnaSell());
     }
 
     @Override

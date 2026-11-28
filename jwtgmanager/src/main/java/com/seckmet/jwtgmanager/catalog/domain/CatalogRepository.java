@@ -13,4 +13,6 @@ public interface CatalogRepository {
     List<HybridRecipe> hybridRecipes();
 
     Optional<CreatureSheet> sheetOf(int speciesId);
+
+    List<CreatureSheet> sheets();
 }

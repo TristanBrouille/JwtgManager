@@ -62,6 +62,14 @@ export const routes: Routes = [
           import('./features/fusion/fusion-page/fusion-page').then((m) => m.FusionPage),
       },
       {
+        path: 'tournois',
+        title: 'Tournois · JWTG Manager',
+        loadComponent: () =>
+          import('./features/tournaments/tournaments-page/tournaments-page').then(
+            (m) => m.TournamentsPage,
+          ),
+      },
+      {
         path: 'hybrides',
         title: 'Hybrides · JWTG Manager',
         loadComponent: () =>

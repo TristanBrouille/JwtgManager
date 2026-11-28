@@ -86,7 +86,22 @@ public class ProgressService {
                 byRarity, closest,
                 projection(summary.dnaRemaining(), settings.weeklyDna(), today),
                 projection(summary.superDnaRemaining(), settings.weeklySuperDna(), today),
-                projection(summary.amberRemaining(), settings.weeklyAmber(), today));
+                projection(summary.amberRemaining(), settings.weeklyAmber(), today),
+                favorites(all, lines, settings, today));
+    }
+
+    /** Projection limitée aux espèces favorites (suivies, et dans la monnaie filtrée le cas échéant). */
+    private static DashboardView.FavoritesProjection favorites(List<SpeciesProgressView> all, List<ProgressLine> lines,
+                                                                SettingsView settings, LocalDate today) {
+        Set<Integer> favoriteIds = all.stream().filter(SpeciesProgressView::favorite)
+                .map(SpeciesProgressView::speciesId).collect(Collectors.toSet());
+        List<ProgressLine> favorites = lines.stream().filter(l -> favoriteIds.contains(l.speciesId())).toList();
+        CompletionSummary s = CompletionAggregator.summarize(favorites);
+        int unknownCost = (int) favorites.stream().filter(l -> !l.done() && !l.costKnown()).count();
+        return new DashboardView.FavoritesProjection(favorites.size(), s.done(), unknownCost,
+                projection(s.dnaRemaining(), settings.weeklyDna(), today),
+                projection(s.superDnaRemaining(), settings.weeklySuperDna(), today),
+                projection(s.amberRemaining(), settings.weeklyAmber(), today));
     }
 
     @Transactional(readOnly = true)

@@ -11,7 +11,7 @@ JWTG Manager remplace le gros tableur Excel de suivi par une application web. Ch
 | Écran | Ce qu'il fait |
 |---|---|
 | **Tableau de bord** | KPI de complétion globale, ADN / super ADN / ambre restants, espèces terminées, courbe d'évolution, complétion par rareté, espèces les plus proches de l'objectif (dépenses en ADN), projection selon le budget hebdo, accès rapide aux favoris |
-| **Espèces** | Tableau des 351 espèces avec filtres (rareté, type normal / hybride / super hybride, déblocage, statut), tri par défaut sur le coût unitaire et couleurs : 🟧 bloquée débloquable à l'ambre, 🟥 bloquée sans ambre |
+| **Espèces** | Tableau des 399 espèces (catalogue de paleo.gg, hors boss mondiaux) avec filtres (rareté, type normal / hybride / super hybride, déblocage, statut), tri par défaut sur le coût unitaire et couleurs : 🟧 bloquée débloquable à l'ambre, 🟥 bloquée sans ambre |
 | **Fiche espèce** | Clic sur le nom dans le tableau : image, région, classe, santé et attaque par palier, pièces, éclosion, prix, recette et hybrides qui l'utilisent, plus la progression du joueur avec +/- et favori |
 | **Objectifs** | Nombre de niveaux 40 visé par espèce, réglable en masse ou espèce par espèce |
 | **Investissements** | Espèces favorites avec +/- rapide par niveau, budget hebdo par monnaie, journal des dépenses |
@@ -80,7 +80,7 @@ psql -d pwtgmanagerdb -f jwtgmanager/src/main/resources/db/jwtg_schema.sql
 psql -d pwtgmanagerdb -f jwtgmanager/src/main/resources/db/jwtg_seed.sql
 ```
 
-Le seed charge les raretés, les 351 espèces, les recettes d'hybrides et un compte de démo.
+Le seed charge les raretés (commun, rare, extra rare, légendaire, tournoi, vedette, superstar, jouet, VIP), les 399 espèces, les recettes d'hybrides et un compte de démo.
 
 ### 2. Back
 
