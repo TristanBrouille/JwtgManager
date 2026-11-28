@@ -1,0 +1,195 @@
+<div class="head">
+  <div>
+    <h1>Tournois</h1>
+    <p>
+      Vos dinos répartis en trios : 2 d'une classe et 1 d'une autre, chaque dino dans la fourchette
+      de fureur de sa ligue, en laissant le moins de dinos possible de côté.
+    </p>
+  </div>
+  <div class="update">
+    <button
+      type="button"
+      (click)="compute()"
+      [disabled]="computing()"
+      [attr.aria-busy]="computing()"
+    >
+      {{ computing() ? 'Calcul en cours…' : 'Mettre à jour les trios' }}
+    </button>
+    @if (plan.value()?.computedAt; as at) {
+      <span class="note">Dernier calcul : {{ at | date: 'd MMM y, HH:mm' }}</span>
+    }
+  </div>
+</div>
+
+@if (error(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+@if (loadError(); as e) {
+  <p class="error-box" role="alert">{{ e }}</p>
+}
+@if (plan.value()?.outdated) {
+  <p class="warn" role="status">
+    Votre collection a changé depuis le dernier calcul : mettez à jour les trios pour en tenir
+    compte.
+  </p>
+}
+
+<details class="card rules">
+  <summary>Règles utilisées</summary>
+  <ul>
+    <li>
+      <b>Jurassique</b> : duo herbivore / amphibien ou carnivore / ptérosaure (2 de l'un, 1 de
+      l'autre). <b>Aquatique</b> et <b>Cénozoïque</b> : 2 dinos d'une classe et 1 d'une autre classe
+      de la région.
+    </li>
+    <li>
+      Chaque dino doit avoir une fureur dans la fourchette de la ligue du trio, pour éviter un trio
+      déséquilibré : jusqu'à <b>320</b> en nouveau-né / proie / rare, de <b>213 à 600</b> en
+      chasseur, de <b>400 à 1 200</b> en prédateur, au moins <b>800</b> en dominant. Un dino sans
+      trio possible dans ces fourchettes reste de côté.
+    </li>
+    <li>
+      Chaque spécimen sert une seule fois par tournoi. Les meilleurs trios sont formés en premier
+      (paire complémentaire : deux <b>équilibrés</b>, ou un <b>tank</b> avec un <b>frappeur</b>), en
+      gardant le plus grand nombre de trios possible.
+    </li>
+    <li>
+      Profil selon attaque ÷ santé : tank sous 0,27, frappeur au-dessus de 0,45, équilibré entre les
+      deux.
+    </li>
+    <li>
+      Fureur d'un dino à son niveau = santé × 5/16 + attaque, arrondie (formule vérifiée sur les
+      fureurs du jeu).
+    </li>
+    <li>
+      Ligue selon la fureur totale du trio : nouveau-né / proie / rare jusqu'à 800, chasseur jusqu'à
+      1 500, prédateur jusqu'à 3 000, dominant au-delà. Une borne appartient à la ligue du dessous.
+    </li>
+  </ul>
+</details>
+
+@if (plan.isLoading() && !plan.value()) {
+  <p class="empty">Chargement…</p>
+} @else if (!plan.value()?.computedAt) {
+  <section class="card empty-state">
+    <p>Aucun trio calculé pour l'instant.</p>
+    <p class="note">
+      Le calcul répartit vos spécimens en trios : lancez-le après avoir mis à jour votre collection.
+    </p>
+  </section>
+} @else {
+  <div ngToolbar class="tabs" aria-label="Choisir un tournoi">
+    @for (t of tabs(); track t.code) {
+      <button
+        ngToolbarWidget
+        type="button"
+        class="seg"
+        [attr.aria-pressed]="selected() === t.code"
+        (click)="selected.set(t.code)"
+      >
+        {{ t.label }}
+      </button>
+    }
+  </div>
+
+  @if (current(); as tournament) {
+    <dl class="summary">
+      <div>
+        <dt>Dinos jouables</dt>
+        <dd>{{ tournament.specimens }}</dd>
+      </div>
+      <div>
+        <dt>Trios</dt>
+        <dd>{{ tournament.teamCount }}</dd>
+      </div>
+      <div>
+        <dt>Dinos placés</dt>
+        <dd>
+          {{ tournament.placed }}
+          @if (tournament.specimens) {
+            <small class="note">({{ tournament.placed / tournament.specimens | percent }})</small>
+          }
+        </dd>
+      </div>
+      <div [class.bad]="tournament.specimens - tournament.placed > 0">
+        <dt>Sans trio</dt>
+        <dd>{{ tournament.specimens - tournament.placed }}</dd>
+      </div>
+      <div>
+        <dt>Trios idéaux</dt>
+        <dd>{{ tournament.idealTeams }} / {{ tournament.teamCount }}</dd>
+      </div>
+    </dl>
+
+    @if (tournament.teamCount === 0) {
+      <p class="empty">
+        Aucun trio possible en tournoi {{ tournament.label.toLowerCase() }} avec vos spécimens
+        actuels.
+      </p>
+    }
+    @for (league of tournament.leagues; track league.code) {
+      @if (league.teams.length) {
+        <section class="league">
+          <h2>
+            Ligue {{ league.label }}
+            <small class="note">
+              {{ league.teams.length }} trio{{ league.teams.length > 1 ? 's' : '' }} ·
+              @if (league.upTo !== null) {
+                trio de {{ league.above === 0 ? 0 : league.above + 1 }} à {{ league.upTo }}
+              } @else {
+                trio au-delà de {{ league.above }}
+              }
+              ·
+              @if (league.maxUnit === null) {
+                chaque dino ≥ {{ league.minUnit }}
+              } @else if (league.minUnit === 0) {
+                chaque dino ≤ {{ league.maxUnit }}
+              } @else {
+                chaque dino de {{ league.minUnit }} à {{ league.maxUnit }}
+              }
+            </small>
+          </h2>
+          <div class="teams">
+            @for (team of league.teams; track team.rank) {
+              <app-team-card [team]="team" />
+            }
+          </div>
+        </section>
+      }
+    }
+
+    @if (tournament.leftovers.length) {
+      <section class="card leftovers">
+        <h2>Sans trio</h2>
+        <p class="note">
+          Aucun partenaire pour ces dinos : il manque des dinos d'une autre classe de la région, ou
+          aucun trio ne respecte les fourchettes de fureur des ligues.
+        </p>
+        <ul>
+          @for (l of tournament.leftovers; track l.specimen.speciesId + '-' + l.specimen.level) {
+            <li>
+              @if (l.specimen.portraitUrl) {
+                <img
+                  [src]="l.specimen.portraitUrl"
+                  [alt]="l.specimen.name + ' niveau ' + l.specimen.level"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              }
+              <a [routerLink]="['/especes', l.specimen.speciesId]">{{ l.specimen.name }}</a>
+              <span class="note"
+                >niv. {{ l.specimen.level }} · {{ l.specimen.creatureClass }} · fureur
+                {{ l.specimen.ferocity }}</span
+              >
+              @if (l.count > 1) {
+                <b class="count">× {{ l.count }}</b>
+              }
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  }
+}

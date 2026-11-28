@@ -1,0 +1,351 @@
+1|Triceratops|C|100|5000|NONE|t|triceratops
+2|Majungasaurus|C|110|5000|NONE|t|majungasaurus
+3|Alanka|C|120|5000|NONE|t|alanqa
+4|Tuojangosaure|C|130|5000|NONE|f|tuojiangosaurus
+5|Limnocelis|C|130|5000|NONE|t|limnoscelis
+6|Labyrinthodonte|C|130|5000|NONE|t|labyrinthodontia
+7|Coloborhyncus|C|140|5000|NONE|f|coloborhynchus
+8|Bonitasaura|C|150|5000|NONE|t|bonitasaura
+9|Argentinosaure|C|160|5000|NONE|t|argentinosaurus
+10|Guanlong|C|170|5000|NONE|t|guanlong
+11|Pelecanimimus|C|170|5000|NONE|f|pelecanimimus
+12|Tropeognathus|C|180|5000|NONE|t|tropeognathus
+13|Diplocaulus|C|190|5000|NONE|t|diplocaulus
+14|Hatzegopterix|C|200|5000|NONE|t|hatzegopteryx
+15|Utahraptor|C|200|5000|NONE|t|utahraptor
+16|Alangasaure|C|1290||HYBRID|t|alangasaurus
+17|Limnorhynque|C|1490||HYBRID|t|limnorhynchus
+18|Labyrinthosaure|C|1630||HYBRID|t|labyrinthosaurus
+19|Pelecanipteryx|C|2030||HYBRID|t|pelecanipteryx
+20|Pelecachtylus|C|500||SUPER_HYBRID|t|pelecachtylus
+21|Allosaure|R|500|10000|NONE|f|allosaurus
+22|Giganotosaure|R|520|10000|NONE|f|giganotosaurus
+23|Irritator|R|530|10000|NONE|t|irritator
+24|Nasutoceratops|R|550|10000|NONE|f|nasutoceratops
+25|Dsungaripterus|R|560|10000|NONE|t|dsungaripterus
+26|Gallimimus|R|580|10000|NONE|t|gallimimus
+27|Pachycephalosaure|R|590|10000|NONE|t|pachycephalosaurus
+28|Koolasuchus|R|610|10000|NONE|t|koolasuchus
+29|Corythosaure|R|630|10000|NONE|f|corythosaurus
+30|Pyroraptor|R|650|10000|NONE|f|pyroraptor
+31|Tapejara|R|670|10000|NONE|t|tapejara
+32|Dilophosaure|R|690|10000|NONE|t|dilophosaurus
+33|Nundasuchus|R|700|10000|NONE|t|nundasuchus
+34|Tyrannotitan|R|710|10000|NONE|f|tyrannotitan
+35|Carnotaurus|R|730|10000|NONE|t|carnotaurus
+36|Diplodocus|R|750|10000|NONE|t|diplodocus
+37|Rhamphorgynchus|R|750|10000|NONE|t|rhamphorhynchus
+38|Ophiacodon|R|780|10000|NONE|t|ophiacodon
+39|Monolophosaure|R|850|10000|NONE|t|monolophosaurus
+40|Doplotator|R|4000||HYBRID|t|diplotator
+41|Nundagosaure|R|4600||HYBRID|t|nundagosaurus
+42|Pachyceratops|R|6360||HYBRID|t|pachyceratops
+43|Ophiacomimus|R|7560||HYBRID|t|ophiacomimus
+44|Carnoraptor|R|7730||HYBRID|t|carnoraptor
+45|Tapejalosaurus|R|8520||HYBRID|t|tapejalosaurus
+46|Diplosuchus|R|660||SUPER_HYBRID|t|diplosuchus
+47|Dimetrocarnus|R|||SUPER_HYBRID|f|dimetrocarnus
+48|Tapejalocephalus|R|||SUPER_HYBRID|f|tapejalocephalus
+49|Euoplocephalus|E|1000|25000|NONE|f|euoplocephalus
+50|Zhejiangopterus|E|1100|25000|NONE|t|zhejiangopterus
+51|Ankylosaure|E|1200|25000|NONE|t|ankylosaurus
+52|Parasaurolophus|E|1200|25000|NONE|f|parasaurolophus
+53|Rajasaurus|E|1300|25000|NONE|f|rajasaurus
+54|Quetzalcoatlus|E|1350|25000|NONE|t|quetzalcoatlus
+55|Amphicyon|E|1400|25000|NONE|t|amphicyon
+56|Deodicurus|E|1400|25000|NONE|f|doedicurus
+57|Elasmotherium|E|1400|25000|NONE|t|elasmotherium
+58|Megistotherium|E|1400|25000|NONE|t|megistotherium
+59|Metriorhynchus|E|1400|25000|NONE|f|metriorhynchus
+60|Sarkastodon|E|1400|25000|NONE|f|sarkastodon
+61|Supersaurus|E|1400|25000|NONE|f|supersaurus
+62|Archaeotherium|E|1500|25000|NONE|t|archaeotherium
+63|Spinausaurus|E|1500|25000|NONE|t|spinosaurus
+64|Stegosaure|E|1500|25000|NONE|t|stegosaurus
+65|Velocirapore|E|1500|25000|NONE|t|velociraptor
+66|Velociraptore Gen 2|E|1500|25000|NONE|t|velociraptor_gen_2
+67|Aerotitan|E|1600||NONE|f|aerotitan
+68|Deinotherium|E|1600|25000|NONE|t|deinotherium
+69|Entelodonte|E|1600|25000|NONE|f|entelodon
+70|Kaprosuchus|E|1600|25000|NONE|t|kaprosuchus
+71|Postosuchus|E|1650|25000|NONE|t|postosuchus
+72|Synthetoceras|E|1650|25000|NONE|t|synthetoceras
+73|Dakosaure|E|2000|25000|NONE|t|dakosaurus
+74|Dolichorhynchops|E|2000|25000|NONE|t|dolichorhynchops
+75|Onchopristis|E|2000|25000|NONE|f|onchopristis
+76|Leptocleidus|E|2150|25000|NONE|f|leptocleidus
+77|Protostega|E|2200|25000|NONE|t|protostega
+78|Prognathodon|E|2250|25000|NONE|t|prognathodon
+79|Elasmosaure|E|2400|25000|NONE|f|elasmosaurus
+80|Helicoprion|E|2500|25000|NONE|t|helicoprion
+81|Mauisaurus|E|2500|25000|NONE|t|mauisaurus
+82|Trinacromerum|E|2500|25000|NONE|f|trinacromerum
+83|Xiphactinus|E|2500|25000|NONE|t|xiphactinus
+84|Geosaure|E|2900|25000|NONE|t|geosaurus
+85|Baculite|E|3000|25000|NONE|f|baculites
+86|Psephoderma|E|3000|25000|NONE|t|psephoderma
+87|Tropeogopterus|E|7130||HYBRID|t|tropeogopterus
+88|Parasaura|E|7550||HYBRID|f|parasaura
+89|Giganocephalus|E|8490||HYBRID|f|giganocephalus
+90|Metrialong|E|8770||HYBRID|f|metrialong
+91|Stegoceratops|E|8960||HYBRID|f|stegoceratops
+92|Spinoraptor|E|9520||HYBRID|f|spinoraptor
+93|Ankylodocus|E|10920||HYBRID|f|ankylodocus
+94|Suprannotitan|E|11820||HYBRID|f|suprannotitan
+95|Megistocurus|E|15680||HYBRID|f|megistocurus
+96|Archeaophicyon|E|16240||HYBRID|f|archaeophicyon
+97|Leptostega|E|24360||HYBRID|f|leptostega
+98|Xinathodon|E|26600||HYBRID|f|xinathodon
+99|Dakoderma|E|28000||HYBRID|f|dakoderma
+100|Geolasmosaurus|E|29680||HYBRID|f|geolasmosaurus
+101|Gigakylocephalus|E|||SUPER_HYBRID|f|gigakylocephalus
+102|Monostegotops|E|||SUPER_HYBRID|f|monostegotops
+103|Spinotasuchus|E|||SUPER_HYBRID|f|spinotasuchus
+104|Microposaure|L|2500|50000|NONE|t|microposaurus
+105|Suchomimus|L|2630|50000|NONE|f|suchomimus
+106|Unaysaurus|L|2770|50000|NONE|t|unaysaurus
+107|Pteranodon|L|2910|50000|NONE|t|pteranodon
+108|Phorusrhacos|L|3000|50000|NONE|t|phorusrhacos
+109|Eremotherium|L|3050|50000|NONE|t|eremotherium
+110|Sarcosuchus|L|3050|50000|NONE|f|sarcosuchus
+111|Megaloceros|L|3080|50000|NONE|t|megaloceros
+112|Shunosaurus|L|3100|50000|NONE|f|shunosaurus
+113|Ostafrikasaurus|L|3190|50000|NONE|t|ostafrikasaurus
+114|Diprotodon|L|3200|50000|NONE|t|diprotodon
+115|Indricotherium|L|3250|50000|NONE|t|indricotherium
+116|Ichtyostega|L|3330|50000|NONE|t|ichthyostega
+117|Scolosaure|L|3430|50000|NONE|f|scolosaurus
+118|Prionosuchus|L|3470|50000|NONE|f|prionosuchus
+119|Therizinosaure|L|3500|50000|NONE|t|therizinosaurus
+120|Andrewsarchus|L|3550|50000|NONE|t|andrewsarchus
+121|Dimorphodon|L|3600|50000|NONE|t|dimorphodon
+122|Dimetrodon|L|3610|50000|NONE|f|dimetrodon
+123|Uintatherium|L|3650|50000|NONE|t|uintatherium
+124|Scaphognathus|L|3700|50000|NONE|f|scaphognathus
+125|Glyptodon|L|3750||NONE|f|glyptodon
+126|Tyrannosaure|L|3750|50000|NONE|t|tyrannosaurus_rex
+127|T-Rex Gen 2|L|3750|50000|NONE|t|tyrannosaurus_rex_gen_2
+128|Lion Marsupial|L|3900|50000|NONE|t|marsupial_lion
+129|Ammonite|L|4000|50000|NONE|t|ammonite
+130|Compsognathus|L|4000||NONE|f|compsognathus
+131|Pliosaure|L|4000|50000|NONE|t|pliosaurus
+132|Hyneria|L|4050|50000|NONE|t|hyneria
+133|Dunkleosteus|L|4200|50000|NONE|t|dunkleosteus
+134|Hauffiosaurus|L|4300|50000|NONE|t|hauffiosaurus
+135|Kronosaurus|L|4400|50000|NONE|f|kronosaurus
+136|Leedsichthys|L|4400|50000|NONE|t|leedsichthys
+137|Liopleurodon|L|4500|50000|NONE|t|liopleurodon
+138|Plesiosaure|L|4500|50000|NONE|t|plesiosaurus
+139|Megalodon|L|4600|50000|NONE|t|megalodon
+140|Kaiwhekea|L|4800|50000|NONE|t|kaiwhekea
+141|Styxosaurus|L|4800|50000|NONE|f|styxosaurus
+142|Rhizodus|L|4900|50000|NONE|f|rhizodus
+143|Suchoripterus|L|17900||HYBRID|f|suchoripterus
+144|Unayrhynchus|L|19720||HYBRID|f|unayrhynchus
+145|Koolasaurus|L|20500||HYBRID|f|koolasaurus
+146|Skoolasaure|L|22600||HYBRID|f|skoolasaurus
+147|Entelorhacos|L|25750||HYBRID|f|entelorhacos
+148|Rajastega|L|25930||HYBRID|f|rajastega
+149|Andrewterium|L|28840||HYBRID|f|andrewtherium
+150|Indominus Rex|L|29400||HYBRID|f|indominus_rex
+151|Indominus Rex Gen 2|L|29400||HYBRID|f|indominus_rex_gen_2
+152|Ostaposaure|L|31870||HYBRID|f|ostaposaurus
+153|Indricoceros|L|35420||HYBRID|f|indricoceros
+154|Hynecoprion|L|36680||HYBRID|f|hynecoprion
+155|Priotrodon|L|39650||HYBRID|f|priotrodon
+156|Liosichtodon|L|49840||HYBRID|f|liosichtodon
+157|Skoonasaure|L|||SUPER_HYBRID|f|skoonasaurus
+158|Indoraptor|L|||SUPER_HYBRID|f|indoraptor
+159|Indoraptor Gen 2|L|||SUPER_HYBRID|f|indoraptor_gen_2
+160|Compsognathus Gen 2|T|6400||NONE|f|compsognathus_gen_2
+161|Deinocheirus|T|5500||NONE|t|deinocheirus
+162|Dodo|T|6470||NONE|f|dodo
+163|Pterodactylus|T|6380||NONE|f|pterodactylus
+164|Gorgosaure|T|6000||NONE|f|gorgosaurus
+165|Kentrosaure|T|6000||NONE|t|kentrosaurus
+166|Little Eatie|T|6350||NONE|f|little_eatie
+167|Aquilops|T|6400||NONE|f|aquilops
+168|Australotitan|T|6400||NONE|f|australotitan
+169|Dracovenator|T|6450||NONE|f|dracovenator
+170|Cératosaure|T|6500||NONE|t|ceratosaurus
+171|Yutyrannus|T|6500||NONE|f|yutyrannus
+172|Eucladocéros|T|6550||NONE|f|eucladoceros
+173|Yuxisaurus|T|6550||NONE|f|yuxisaurus
+174|Kelenken|T|6580||NONE|f|kelenken
+175|Cervalces|T|6600||NONE|f|cervalces
+176|Diabloceratops|T|6600||NONE|f|diabloceratops
+177|Gigantophis|T|6600||NONE|f|gigantophis
+178|Nodosaure|T|6600||NONE|f|nodosaurus
+179|Pederpes Lux|T|6600||NONE|f|pederpes_lux
+180|Scélidosaure|T|6600||NONE|f|scelidosaurus
+181|Solitaire De Rodrigues|T|6900||NONE|f|rodrigues_solitaire
+182|Smilodon|T|6700||NONE|f|smilodon
+183|Bumpy|T|6750||NONE|f|bumpy
+184|Einiosaure|T|6750||NONE|f|einiosaurus
+185|Pachyrhinosaure|T|6750||NONE|t|pachyrhinosaurus
+186|Mylodon|T|6800||NONE|f|mylodon
+187|Struthiomimus|T|6800||NONE|f|struthiomimus
+188|Big Eatie|T|6830||NONE|f|big_eatie
+189|Borealopelta|T|6850||NONE|f|borealopelta
+190|Masiakasaurus|T|6850||NONE|f|masiakasaurus
+191|Iguanodon|T|6900||NONE|f|iguanodon
+192|Irritator Gén 2|T|6900||NONE|t|irritator_gen_2
+193|Megatherium|T|6900||NONE|f|megatherium
+194|Sinosauropteryx|T|6900||NONE|f|sinosauropteryx
+195|Stegouros|T|6950||NONE|f|stegouros
+196|Styracosaurus Lux|T|6950||NONE|t|styracosaurus_lux
+197|Red|T|6980||NONE|f|red
+198|Ailurarctos|T|7000||NONE|f|ailurarctos
+199|Antarctopelta|T|7000||NONE|f|antarctopelta
+200|Arctodus|T|7000||NONE|f|arctodus
+201|Beta|T|7000||NONE|f|beta
+202|Dracorex|T|7000||NONE|f|dracorex
+203|Erlikosaure|T|7000||NONE|f|erlikosaurus
+204|Eryops|T|7000||NONE|f|eryops
+205|Giganotosaurus Gén 2|T|7000||NONE|f|giganotosaurus_gen_2
+206|Mégalosaure|T|7000||NONE|f|megalosaurus
+207|Rhinocéros Laineux|T|7000||NONE|f|woolly_rhinoceros
+208|Zalmoxes|T|7000||NONE|t|zalmoxes
+209|Dracorex Gén 2|T|7050||NONE|f|dracorex_gen_2
+210|Lythronax|T|7050||NONE|t|lythronax
+211|Brunette|T|7050||NONE|f|brunette
+212|Tsintaosaurus|T|7050||NONE|f|tsintaosaurus
+213|Charlie|T|7080||NONE|f|charlie
+214|Albertosaurus|T|7100||NONE|f|albertosaurus
+215|Deinonychus|T|7100||NONE|f|deinonychus
+216|Delta|T|7100||NONE|f|delta
+217|Gastornis|T|7100||NONE|f|gastornis
+218|Homalocéphale|T|7100||NONE|f|homalocephale
+219|Deinosuchus|T|7100||NONE|f|deinosuchus
+220|Fukuisaurus|T|7150||NONE|f|fukuisaurus
+221|Koreanosaurus|T|7150||NONE|f|koreanosaurus
+222|Sinocératops|T|7150||NONE|f|sinoceratops
+223|Sphenacodon|T|7150||NONE|f|sphenacodon
+224|Blonde Becky|T|7150||NONE|f|blonde_becky
+225|Doe|T|7150||NONE|f|tyrannosaur_doe
+226|Buck|T|7150||NONE|f|tyrannosaur_buck
+227|Carbonemys|T|7150||NONE|f|carbonemys
+228|Cryolophosaurus|T|7200||NONE|t|cryolophosaurus
+229|Sonorasaurus|T|7200||NONE|f|sonorasaurus
+230|Tricératops Gén 2|T|7200||NONE|f|triceratops_gen_2
+231|Toro|T|7200||NONE|f|toro
+232|The Big One|T|7200||NONE|f|the_big_one
+233|Acanthostega|T|7250||NONE|f|acanthostega
+234|Diplocaulus Gén 2|T|7250||NONE|t|diplocaulus_gen_2
+235|Mastodonte|T|7250||NONE|f|mastodon
+236|Sécodontosaure|T|7250||NONE|t|secodontosaurus
+237|Ghost|T|7250||NONE|f|ghost
+238|Stégosaure Gén 2|T|7250||NONE|f|stegosaurus_gen_2
+239|Echo|T|7280||NONE|f|echo
+240|Purussaurus|T|7290||NONE|f|purussaurus
+241|Monkeydactyl|T|7300||NONE|f|monkeydactyl
+242|Seymouria|T|7300||NONE|f|seymouria
+243|Spinosaurus Gén 2|T|7300||NONE|f|spinosaurus_gen_2
+244|Bajadasaurus|T|7350||NONE|f|bajadasaurus
+245|Edaphosaurus|T|7330||NONE|t|edaphosaurus
+246|Proterogyrinus|T|7350||NONE|f|proterogyrinus
+247|Rinchenia|T|7350||NONE|f|rinchenia
+248|Bull|T|7380||NONE|f|tyrannosaur_bull
+249|The Spino|T|7380||NONE|f|the_spino
+250|Bageherpeton|T|7380||NONE|t|bageherpeton
+251|Thérizinosaure Gén 2|T|7380||NONE|t|therizinosaurus_gen_2
+252|Geosternbergia|T|7400||NONE|f|geosternbergia
+253|Gryposuchus|T|7400||NONE|f|gryposuchus
+254|Blue|T|7400||NONE|f|blue
+255|Carnotaurus Jouet|T|7450||NONE|f|carnotaurus_toy
+256|One-Armed Baryonyx|T|7450||NONE|f|one_armed_baryonyx
+257|Panthera|T|7450||NONE|f|panthera
+258|Baryonyx Leucistique|T|7450||NONE|f|leucistic_baryonyx
+259|Diploceraspis|T|7450||NONE|t|diploceraspis
+260|Panthera Blytheae|T|7480||NONE|f|panthera_blytheae
+261|Amargasaurus|T|7500||NONE|f|amargasaurus
+262|Cearadactylus|T|7500||NONE|f|cearadactylus
+263|Darwinopterus|T|7500||NONE|f|darwinopterus
+264|Dilophosaure Gén 2|T|7500||NONE|t|dilophosaurus_gen_2
+265|Dreadnoughtus|T|7500||NONE|f|dreadnoughtus
+266|Kaprosuchus Gén 2|T|7500||NONE|t|kaprosuchus_gen_2
+267|Metriacanthosaure|T|7500||NONE|f|metriacanthosaurus
+268|Parasaurolophus Gén 2|T|7500||NONE|f|parasaurolophus_gen_2
+269|Segnosaure|T|7500||NONE|f|segnosaurus
+270|Troödon|T|7500||NONE|f|troodon
+271|Rexy|T|7500||NONE|f|rexy
+272|Dakotaraptor|T|7510||NONE|f|dakotaraptor
+273|Nyctosaurus|T|7550||NONE|f|nyctosaurus
+274|Mammouth|T|7600||NONE|f|woolly_mammoth
+275|Arambourgiania|T|7650||NONE|t|arambourgiania
+276|Urtinotherium|T|7650||NONE|f|urtinotherium
+277|Brachiosaure|T|7730||NONE|f|brachiosaurus
+278|Edmontosaurus|T|7750||NONE|f|edmontosaurus
+279|Thalassodromeus|T|7750||NONE|f|thalassodromeus
+280|Titanoboa|T|7750||NONE|t|titanoboa
+281|Tupandactylus|T|7750||NONE|f|tupandactylus
+282|Ornithocheirus|T|7800||NONE|f|ornithocheirus
+283|Archelon|T|8000||NONE|t|archelon
+284|Mosasaure|T|8000||NONE|f|mosasaurus
+285|Ptéranodon Gén 2|T|8000||NONE|f|pteranodon_gen_2
+286|Tupuxuara|T|8000||NONE|f|tupuxuara
+287|Mosasaure Gén 2|T|8250||NONE|t|mosasaurus_gen_2
+288|Ophthalmosaure|T|8250||NONE|t|ophthalmosaurus
+289|Gillicus|T|8300||NONE|f|gillicus
+290|Barracudasaurus|T|8400||NONE|f|barracudasaurus
+291|Platecarpus|T|8500||NONE|f|platecarpus
+292|Temnodontosaurus|T|8500||NONE|f|temnodontosaurus
+293|Umoonasaurus|T|8500||NONE|f|umoonasaurus
+294|Goronyosaurus|T|8650||NONE|f|goronyosaurus
+295|Plesiosuchus|T|8900||NONE|f|plesiosuchus
+296|Bananogmius|T|9000||NONE|f|bananogmius
+297|Edestus|T|9000||NONE|f|edestus
+298|Suchodus|T|9000||NONE|f|suchodus
+299|Smoothie|T|9050||NONE|f|smoothie
+300|Pierce|T|9100||NONE|f|pierce
+301|Major|T|9200||NONE|f|major
+302|Tiger|T|9250||NONE|f|tiger
+303|Rebel|T|9380||NONE|f|rebel
+304|Angel|T|9380||NONE|f|angel
+305|Junior|T|9500||NONE|f|junior
+306|Spinosaurus Rebirth|T|14000||NONE|f|spinosaurus_rebirth
+307|The Cerato Jp3|T|14000||NONE|f|ceratosaurus_gen_2
+308|One-Eyed Allosaurus|T|14080||NONE|f|one_eyed_allosaurus
+309|Pyroraptor Dominion|T|14100||NONE|f|pyroraptor_dominion
+310|Mosasaurus Rebirth|T|14250||NONE|f|mosasaurus_gen_3
+311|Gorgosuchus|T|42560||HYBRID|f|gorgosuchus
+312|Erliphosaurus|T|43070||HYBRID|f|erliphosaurus
+313|Allonogmius|T|45000||HYBRID|f|allonogmius
+314|Smithetoceras|T|46760||HYBRID|f|smithetoceras
+315|Cerazinosaure|T|48000||HYBRID|f|cerazinosaurus
+316|Sah Panthera|T|49700||HYBRID|f|sah_panthera
+317|Mammotherium|T|50400||HYBRID|f|mammotherium
+318|Segnosuchus|T|51240||HYBRID|f|segnosuchus
+319|Ptéraquetzal|T|52360||HYBRID|f|pteraquetzal
+320|Zalmonodon|T|55500||HYBRID|f|zalmonodon
+321|Rhinoprotodon|T|57120||HYBRID|f|rhinoprotodon
+322|Gillirhynchops|T|57680||HYBRID|f|gillirhynchops
+323|Glythronax|T|60400||HYBRID|f|glythronax
+324|Secodontognathus|T|61320||HYBRID|f|secodontognathus
+325|Metriaphodon|T|62160||HYBRID|f|metriaphodon
+326|Tyrannolophosaure|T|63000||HYBRID|f|tyrannolophosaur
+327|Megarchelon|T|66960||HYBRID|f|megarchelon
+328|Dunkleosaure|T|68320||HYBRID|f|dunkleosaurus
+329|Dreadactylus|T|75600||HYBRID|f|dreadactylus
+330|Pachygalosaure|T|77000||HYBRID|f|pachygalosaurus
+331|Kaprodacthylus|T|77120||HYBRID|f|kaprodacthylus
+332|Scorpios Rex Gén 2|T|77840||HYBRID|f|scorpios_rex_gen_2
+333|Fukuimimus|T|78120||HYBRID|f|fukuimimus
+334|Draco Lux|T|78400||HYBRID|f|draco_lux
+335|Yudon|T|78400||HYBRID|f|yudon
+336|Compsovenator|T|78420||HYBRID|f|compsovenator
+337|Dracocératops|T|79520||HYBRID|f|dracoceratops
+338|Iguanosuchus|T|80080||HYBRID|f|iguanosuchus
+339|Scorpios Rex|T|79520||HYBRID|f|scorpios_rex
+340|Spinoceratops|T|80920||HYBRID|f|spinoceratops
+341|Bagehesaurus|T|82320||HYBRID|f|bagehesaurus
+342|Chromaspinus|T|82740||HYBRID|f|chromaspinus
+343|Armormata|T|83160||HYBRID|f|armormata
+344|Cryolobourgiania|T|83160||HYBRID|f|cryolobourgiania
+345|Poukadei|T|82740||HYBRID|f|poukadei
+346|Dilophoboa|T|85400||HYBRID|f|dilophoboa
+347|Ophthacerapsis|T|87920||HYBRID|f|ophthacerapsis
+348|Megalocevia|T|||SUPER_HYBRID|f|megalocevia
+349|Quetzaljara|T|||SUPER_HYBRID|f|quetzaljara
+350|Spinotops|T|||SUPER_HYBRID|f|spinotops
+351|Hydraboa|T|||SUPER_HYBRID|f|hydraboa

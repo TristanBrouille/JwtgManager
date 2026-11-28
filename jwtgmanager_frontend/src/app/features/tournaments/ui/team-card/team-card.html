@@ -1,0 +1,41 @@
+@let t = team();
+<article class="card team">
+  <header>
+    <span class="rank">#{{ t.rank }}</span>
+    <div>
+      <b class="total">{{ t.totalFerocity }}</b>
+      <span class="note">fureur totale · écart {{ t.ferocityGap }}</span>
+    </div>
+  </header>
+  <p class="combo note">
+    2 {{ t.pairClass }} + 1 {{ t.singleClass }}
+    <span class="quality" [attr.data-quality]="t.quality">{{ t.qualityLabel }}</span>
+  </p>
+  <ol>
+    @for (m of t.members; track $index; let i = $index) {
+      <li [class.single]="i === 2">
+        @if (m.portraitUrl) {
+          <img
+            [src]="m.portraitUrl"
+            [alt]="m.name + ' niveau ' + m.level"
+            width="48"
+            height="48"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+        } @else {
+          <span class="ph" aria-hidden="true">🦖</span>
+        }
+        <div class="who">
+          <a [routerLink]="['/especes', m.speciesId]">{{ m.name }}</a>
+          <span class="note">niv. {{ m.level }} · {{ m.creatureClass }}</span>
+        </div>
+        <div class="stats">
+          <b>{{ m.ferocity }}</b>
+          <span class="note">❤ {{ m.health }} · ⚔ {{ m.attack }}</span>
+        </div>
+        <span class="profile" [attr.data-profile]="m.profile">{{ m.profileLabel }}</span>
+      </li>
+    }
+  </ol>
+</article>

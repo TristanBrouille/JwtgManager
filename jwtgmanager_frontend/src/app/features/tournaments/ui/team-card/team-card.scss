@@ -1,0 +1,116 @@
+.team {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+header {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.rank {
+  font:
+    800 20px/1 'Barlow Condensed',
+    sans-serif;
+  color: var(--mute);
+}
+.total {
+  font:
+    800 28px/1 'Barlow Condensed',
+    sans-serif;
+  margin-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.combo {
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+}
+.quality {
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 9px;
+  background: var(--leafbg);
+  color: var(--leaf);
+}
+.quality[data-quality='UNMATCHED_PAIR'] {
+  background: var(--amberbg);
+  color: light-dark(#7a4a06, #f5c27a);
+}
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: center;
+  background: var(--panel2);
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+/* Le dino seul est séparé de la paire. */
+li.single {
+  margin-top: 6px;
+  outline: 1px dashed var(--line);
+}
+img,
+.ph {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  background: var(--panel);
+}
+.who {
+  display: grid;
+  min-width: 0;
+}
+.who a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.who a:hover,
+.who a:focus-visible {
+  color: var(--leaf);
+  text-decoration: underline;
+}
+.stats {
+  display: grid;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.stats b {
+  font-size: 18px;
+}
+.profile {
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 9px;
+  background: var(--leafbg);
+  color: var(--leaf);
+}
+.profile[data-profile='TANK'] {
+  background: light-dark(#dde7f7, #1b2a40);
+  color: light-dark(#2d5fa8, #8fb6f0);
+}
+.profile[data-profile='STRIKER'] {
+  background: var(--superbg);
+  color: var(--rex);
+}

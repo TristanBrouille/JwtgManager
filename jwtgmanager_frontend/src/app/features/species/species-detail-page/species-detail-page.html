@@ -26,20 +26,30 @@
       <p class="kicker">
         <app-rarity-chip [code]="d.rarityCode" />
         @if (d.hybridKind !== 'NONE') {
-          · <span [class.super]="d.hybridKind === 'SUPER_HYBRID'">{{ kindLabel[d.hybridKind] }}</span>
+          ·
+          <span [class.super]="d.hybridKind === 'SUPER_HYBRID'">{{ kindLabel[d.hybridKind] }}</span>
         }
       </p>
       <h1>{{ d.name }}</h1>
       @if (sheet) {
         <dl class="tags">
           @if (sheet.region) {
-            <div><dt>Région</dt><dd>{{ sheet.region }}</dd></div>
+            <div>
+              <dt>Région</dt>
+              <dd>{{ sheet.region }}</dd>
+            </div>
           }
           @if (sheet.creatureClass) {
-            <div><dt>Classe</dt><dd>{{ sheet.creatureClass }}</dd></div>
+            <div>
+              <dt>Classe</dt>
+              <dd>{{ sheet.creatureClass }}</dd>
+            </div>
           }
           @if (sheet.releaseDate) {
-            <div><dt>Sortie</dt><dd>{{ sheet.releaseDate }}</dd></div>
+            <div>
+              <dt>Sortie</dt>
+              <dd>{{ sheet.releaseDate }}</dd>
+            </div>
           }
         </dl>
       }
@@ -87,12 +97,27 @@
           <dl class="facts">
             <div>
               <dt>Pièces par cycle</dt>
-              <dd>{{ sheet.coins | short }} <span class="note">/ {{ sheet.coinMinutes | duration }}</span></dd>
+              <dd>
+                {{ sheet.coins | short }}
+                <span class="note">/ {{ sheet.coinMinutes | duration }}</span>
+              </dd>
             </div>
-            <div><dt>Pièces par minute</dt><dd>{{ sheet.coinsPerMinute | short }}</dd></div>
-            <div><dt>Temps d'éclosion</dt><dd>{{ sheet.hatchMinutes | duration }}</dd></div>
-            <div><dt>Prix d'achat</dt><dd>{{ sheet.dnaBuy | short }} <span class="note">ADN</span></dd></div>
-            <div><dt>Prix de vente</dt><dd>{{ sheet.dnaSell | short }} <span class="note">ADN</span></dd></div>
+            <div>
+              <dt>Pièces par minute</dt>
+              <dd>{{ sheet.coinsPerMinute | short }}</dd>
+            </div>
+            <div>
+              <dt>Temps d'éclosion</dt>
+              <dd>{{ sheet.hatchMinutes | duration }}</dd>
+            </div>
+            <div>
+              <dt>Prix d'achat</dt>
+              <dd>{{ sheet.dnaBuy | short }} <span class="note">ADN</span></dd>
+            </div>
+            <div>
+              <dt>Prix de vente</dt>
+              <dd>{{ sheet.dnaSell | short }} <span class="note">ADN</span></dd>
+            </div>
           </dl>
         </section>
       } @else {
@@ -150,8 +175,8 @@
   @if (sheet) {
     <p class="note credit">
       Statistiques et images :
-      <a [href]="sheet.sourceUrl" target="_blank" rel="noopener noreferrer">paleo.gg</a>.
-      Jurassic World : le jeu est édité par Ludia.
+      <a [href]="sheet.sourceUrl" target="_blank" rel="noopener noreferrer">paleo.gg</a>. Jurassic
+      World : le jeu est édité par Ludia.
     </p>
   }
 } @else {
